@@ -11,6 +11,8 @@
 			$(function(){
 				$("#compteur").load("/assets/tpt_compteurs.html"); 
 				$("#progression").load("/assets/tpt_progression.html");
+        var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+        if (etapes[0]==1){$("#formulaire").style="display:none;";}
 			});
 			setInterval(() => {
 				document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
@@ -29,7 +31,7 @@
 			<div id="compteur" style="display:none"></div>
 		
 			<!-- 2 - Epreuve/Texte -->
-			<div class="carte activ">
+			<div id="texte" class="carte activ">
 				<div class="container">
 					<h2><b>Super Mario Escape Game : La quête des étoiles oubliées</b></h2>
 					<p>Le royaume Champignon est en danger depuis que Bowser, toujours aussi rusé, a piégé Mario et ses amis dans une réalité étrange… ton appartement ! 
@@ -38,13 +40,16 @@
 			</div>
 		
 			<!-- 3 - Formulaire de resultat/Boutons -->
-			<div class="carte activ">
+			<div id="formulaire" class="carte activ">
 				<div class="container">
 				<!-- Initialisation du jeu / Retour au menu (avec popup)-->
-				<form action="etapes.html" name="RegForm" type="GET" onsubmit="return valid(0);" class="outer">
-					<div class="buttons"><input class="button_slide" type="submit" value="Envoyer" name="Envoyer" /></div>
+        <form action="etapes.html" name="RegForm" type="GET" onsubmit="return valid(0);" class="outer">
+					<div class="buttons"><input class="button_slide" type="submit" value="Mamma mia !" name="Mamma mia !" /></div>
 				</form>
 			</div>
 		</div>
+
+    <!-- Bas de la page : Barre de progression -->
+		<div id="progression"></div>
 	</body>
 </html>

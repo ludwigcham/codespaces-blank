@@ -1,16 +1,21 @@
+//Initialisation des variables du jeu
+function initGame() {
+	var nbrctivities = 16;
+	//initialisation des variables locales
+	var etapesactivated = Array(nbrctivities).fill(0);
+	etapesactivated[0] = 1;
+	localStorage.setItem("etapeActivated", JSON.stringify(etapesactivated)); //NBR de 0 par étape (avec intro et conclusion)
+	localStorage.setItem("buttonActivated", JSON.stringify(etapesactivated)); //NBR de 0 par étape (avec intro et conclusion)
+	localStorage.setItem("scoreEnCours", 0);
+	localStorage.setItem("etapeEnCours", 0);
+	localStorage.setItem("datedebut", Date.now());	
+}
+
 //validation d'une étape
 function valid(etapevalidee, score) {
-	//Ajout du droit d'accès à l'étape suivante
+	//Si 1ère étape : initialisation du jeu
 	if (etapevalidee===0) {
-		var nbrctivities = 16;
-		//initialisation des variables locales
-		var etapesactivated = Array(nbrctivities).fill(0);
-		etapesactivated[0] = 1;
-		localStorage.setItem("etapeActivated", JSON.stringify(etapesactivated)); //NBR de 0 par étape (avec intro et conclusion)
-		localStorage.setItem("buttonActivated", JSON.stringify(etapesactivated)); //NBR de 0 par étape (avec intro et conclusion)
-		localStorage.setItem("scoreEnCours", 0);
-		localStorage.setItem("etapeEnCours", 0);
-		localStorage.setItem("datedebut", Date.now());		
+		initGame();
 	} 
 	//On permet l'accès à l'étape suivante
 	var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
