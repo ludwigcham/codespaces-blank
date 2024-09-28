@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Super Mario Escape : La Quête des Étoiles oubliées</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/styles.css" />
+	<link rel="icon" type="image/x-icon" href="/assets/logo.png">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+    <script> 
+    $(function(){
+      $("#compteur").load("/assets/tpt_compteurs.html"); 
+	  $("#progression").load("/assets/tpt_progression.html");
+    });
+    </script> 
+  </head>
+  <body onload="initGame()">
+      <a href="etapes.html"><img class="logo" src="/assets/logo.png" alt="La quête des étoiles oubliées"></a>
+      <div class="liste_etape">
+		
+		<!-- Compteurs -->
+		<div id="compteur"></div>
+		
+		<!-- Epreuve -->
+        <div class="carte activ">
+          <div class="container">
+            <h2><b>Mamma mia !</b></h2>
+            <p>Mince ! Moi qui souhaitais te faire parvenir un cadeau, il s'emblerait que je me le sois fait voler par le plus célébre plombier à moustache.
+			<br>Il t'a joué un sacré tour ! Tu vas devoir progresser au sein du jeu pour pouvoir remettre la main dessus !
+			<br><br>Je crois même qu'il t'a ajouté quelques étapes, tu vas devoir suivre à la lettre le jeu pour avancer.
+            <br><br>Wolwig
+			</p>
+		  </div>
+		</div>
+		
+		<!-- Formulaire de resultat/Passage à l'étape suivante -->
+		<div class="carte activ">
+          <div class="container">
+            <form action="etapes.html" name="RegForm" type="GET" onsubmit="return valid(0);" class="outer">
+              <div class="buttons">
+                <input class="button_slide" type="submit" value="Envoyer" name="Envoyer" />
+              </div>
+            </form>
+			
+          </div>
+        </div>
+  </body>
+  <script src="/assets/script.js"></script>
+  <script>
+    setInterval(() => {
+		  document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
+		  document.getElementById("score_zone").innerHTML = localStorage.getItem("score");
+
+    }, 1000)
+  </script>
+</html>

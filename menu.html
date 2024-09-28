@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Escape Argonne</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body onload="getActivity()">>
+			  
+		<!-- Popup -->
+		<div id="popup" style="display:none;">
+			<div class="popup" onclick="document.getElementById('popup').style = 'display:none;';">Mamma mia !
+				<span class="popuptext" id="myPopup"></span>
+			</div>
+		</div>
+		
+		
+      <a href="etapes.html"><img class="logo" src="logo.png" alt="Escape Argonne"></a>
+      <div class="liste_etape">
+        
+        <div class="carte" id="e0" onclick="location.href='6294ef3.html';">
+          <div class="container">
+            <h2><b>Introduction</b></h2>
+          </div>
+        </div>
+        
+        <div class="carte" id="e1" onclick="location.href='rk73d5l.html';">
+          <div class="container">
+            <h2><b>Trouve le numéro vert</b></h2>
+          </div>
+        </div>
+		
+		    <div class="carte" id="e2" onclick="location.href='m4ds296.html';">
+          <div class="container">
+            <h2><b>Stoppe la publication !</b></h2>
+          </div>
+        </div>
+        
+        <div class="carte" id="e3" onclick="location.href='fr8246k.html';">
+          <div class="container">
+            <h2><b>Où est-il ?</b></h2>
+          </div>
+        </div>
+        
+        <div class="carte" id="e4" onclick="location.href='mp703d5.html';">
+          <div class="container">
+            <h2><b>Coupe le bon fil !</b></h2>
+          </div>
+        </div>
+        
+        <div class="carte" id="e5" onclick="location.href='ks63b93.html';">
+          <div class="container">
+            <h2><b>Déchiffre le code</b></h2>
+          </div>
+        </div>
+        
+        <div class="carte" id="e6" onclick="location.href='l4s05m3.html';">
+          <div class="container">
+            <h2><b>Trouve le code (1)</b></h2>
+          </div>
+        </div>
+        
+        <div class="carte" id="e7" onclick="location.href='bm410f4.html';">
+          <div class="container">
+            <h2><b>Trouve le code (2)</b></h2>
+          </div>
+        </div>
+        
+        <div class="carte" id="e8" onclick="location.href='92drt4.html';">
+          <div class="container">
+            <h2><b>Un peu de calculs</b></h2>
+          </div>
+        </div>
+        
+        <div class="carte" id="e9" onclick="location.href='234fcw6.html';">
+          <div class="container">
+            <h2><b>Trouve l'indice</b></h2>
+          </div>
+        </div>
+        
+        <div class="carte" id="e10" onclick="location.href='9h5d35g.html';">
+          <div class="container">
+            <h2><b>Où le capteur est-il ?</b></h2>
+          </div>
+        </div>
+        
+        <div class="carte" id="e11" onclick="location.href='9mf31sg.html';">
+          <div class="container">
+            <h2><b>Bien déchiffrer la lettre</b></h2>
+          </div>
+        </div>
+        
+        <div class="carte" id="e12" onclick="location.href='kj74d8k.html';">
+          <div class="container">
+            <h2><b>Où étais-tu ?</b></h2>
+          </div>
+        </div>
+        
+        <div class="carte" id="e13" onclick="location.href='71fmp32.html';">
+          <div class="container">
+            <h2><b>Action/Réaction</b></h2>
+          </div>
+        </div>
+		
+		<div class="carte" id="e14" onclick="location.href='71fmp32.html';">
+          <div class="container">
+            <h2><b>Action/Réaction</b></h2>
+          </div>
+        </div>
+		
+		<div class="carte" id="e15" onclick="location.href='71fmp32.html';">
+          <div class="container">
+            <h2><b>Action/Réaction</b></h2>
+          </div>
+        </div>
+        
+      </div>
+  </body>
+  <script src="script.js"></script>
+  <script>
+    function getActivity() {
+      var array = JSON.parse(localStorage.getItem("activity"))
+	  console.log(array)
+      for (var i = 1; i < array.length; i++) {
+		console.log(array[i])
+        if (array[i]=="0") {
+          document.getElementById("e"+i).classList.add("inactiv")
+        } else {
+          document.getElementById("e"+i).classList.add("activ")
+        }
+      }
+	  if (localStorage.getItem("scoreDerniereEtapes") != 0) {
+		document.getElementById("myPopup").innerHTML = "Tu marques " + scoreDerniereEtapes ;
+		document.getElementById("myPopup").style = "display:block";
+	  }
+    }
+  </script>
+</html>

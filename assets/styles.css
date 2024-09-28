@@ -1,0 +1,133 @@
+body{
+  padding: 15px;
+  background-color: grey;
+  text-align: center;
+}
+
+h1{
+  color: red;
+  font-family: system-ui;
+}
+
+h2{
+  font-family: system-ui;
+  font-size: 2.5em;
+}
+
+p {
+  font-family: system-ui;
+  font-size: 2em;
+}
+
+label {
+  font-family: system-ui;
+  font-size: 2em;
+}
+
+.logo {
+	width: 100%;
+}
+
+.carte {
+  margin-top: 10px;
+  transition: 0.3s;
+  border-radius: 30px;
+}
+
+.activ {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.inactiv {
+  background-color: grey;
+  pointer-events: none;
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+.result_case {
+  box-shadow: inset 400px 0 0 0 red;
+  color: black;
+  border: 5px solid red;
+  border-radius: 10px;
+  padding: 5px 5px;
+  display: inline-block;
+  font-family: system-ui;
+  font-size: 2em;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #D80286;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+.buttons{
+  margin-top:5px;
+}
+
+.button_slide {
+  border-radius: 10px;
+  padding: 5px 5px;
+  display: inline-block;
+  font-family: system-ui;
+  font-size: 2em;
+  letter-spacing: 1px;
+  box-shadow: inset 400px 0 0 0 red;
+  color: white;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+.buttons-indice {
+  
+}
+
+.button-indice-button {
+  width:70%;
+  text-align: center;
+}
+
+#outer {
+  width: 80%;
+  margin: 5px auto 5px auto;
+  text-align: center;
+}
+
+
+
+.progressbar-wrapper {
+  background-color: #dfe6e9;
+  color: white;
+  border-radius: 15px;
+  width: 100%;
+}
+
+.progressbar {
+  background-color: #e17055;
+  color: white;
+  padding: 1rem;
+  text-align: right;
+  font-size: 20px;
+  border-radius: 15px;
+}
+
+.progressbar[title="downloading"] {
+   background-color: #e17055;
+}
+
+.progressbar[title="downloaded"] {
+   background-color: #00b894;
+}
+  
+.mp4 {
+  width: 100%;
+}
+
+.mp3 {
+  width: 60%;
+}
