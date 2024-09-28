@@ -7,6 +7,7 @@ function valid(etapevalidee, score) {
 		var etapesactivated = Array(nbrctivities).fill(0);
 		etapesactivated[0] = 1;
 		localStorage.setItem("etapeActivated", JSON.stringify(etapesactivated)); //NBR de 0 par étape (avec intro et conclusion)
+		localStorage.setItem("buttonActivated", JSON.stringify(etapesactivated)); //NBR de 0 par étape (avec intro et conclusion)
 		localStorage.setItem("scoreEnCours", 0);
 		localStorage.setItem("etapeEnCours", 0);
 		localStorage.setItem("datedebut", Date.now());		
