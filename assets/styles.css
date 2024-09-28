@@ -1,3 +1,4 @@
+/*BALISES*/
 body{
   padding: 15px;
   background-color: grey;
@@ -24,6 +25,7 @@ label {
   font-size: 2em;
 }
 
+/*CLASSES*/
 .logo {
 	width: 100%;
 }
@@ -48,6 +50,104 @@ label {
   padding: 2px 16px;
 }
 
+#outer {
+  width: 80%;
+  margin: 5px auto 5px auto;
+  text-align: center;
+}
+
+.buttons{
+  margin-top:5px;
+}
+
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.button_slide {
+  border-radius: 10px;
+  padding: 5px 5px;
+  display: inline-block;
+  font-family: system-ui;
+  font-size: 2em;
+  letter-spacing: 1px;
+  box-shadow: inset 400px 0 0 0 red;
+  color: white;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+
+
+
+
+
+
+
 .result_case {
   box-shadow: inset 400px 0 0 0 red;
   color: black;
@@ -65,40 +165,10 @@ label {
   transition: ease-out 0.4s;
 }
 
-.buttons{
-  margin-top:5px;
-}
-
-.button_slide {
-  border-radius: 10px;
-  padding: 5px 5px;
-  display: inline-block;
-  font-family: system-ui;
-  font-size: 2em;
-  letter-spacing: 1px;
-  box-shadow: inset 400px 0 0 0 red;
-  color: white;
-  -webkit-transition: ease-out 0.4s;
-  -moz-transition: ease-out 0.4s;
-  transition: ease-out 0.4s;
-}
-
-.buttons-indice {
-  
-}
-
 .button-indice-button {
   width:70%;
   text-align: center;
 }
-
-#outer {
-  width: 80%;
-  margin: 5px auto 5px auto;
-  text-align: center;
-}
-
-
 
 .progressbar-wrapper {
   background-color: #dfe6e9;

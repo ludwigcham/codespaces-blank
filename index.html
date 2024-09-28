@@ -11,7 +11,7 @@
 		<a href="menu.html"><img class="logo" src="/assets/logo.png"></a>
 		
 		<!-- Blocs centraux -->
-		<div class="liste_etape">
+		<div id="liste_etape">
 		
 			<!-- 1 - Compteurs -->
 			<div id="compteur" style="display:none"></div>
@@ -39,23 +39,25 @@
 		</div>
 
     <!-- Bas de la page : Barre de progression -->
-		<div id="progression"></div>
+		<div id="progression" style="display:none"></div>
+
+    <!-- Scripts de chargement de page -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/assets/script.js"></script>
+    <script> 
+      $(function(){
+        $("#compteur").load("/assets/tpt_compteurs.html"); 
+        $("#progression").load("/assets/tpt_progression.html");
+        var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+        if (etapes[0]=="1"){
+          $("#formulaire").style="display:none;";
+          $("#compteur").style="display:block;";
+        }
+      });
+      setInterval(() => {
+        document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
+        document.getElementById("score_zone").innerHTML = localStorage.getItem("score");
+      }, 1000)
+    </script> 
 	</body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="/assets/script.js"></script>
-  <script> 
-    $(function(){
-      $("#compteur").load("/assets/tpt_compteurs.html"); 
-      $("#progression").load("/assets/tpt_progression.html");
-      var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
-      if (etapes[0]=="1"){
-        $("#formulaire").style="display:none;";
-        $("#compteur").style="display:block;";
-      }
-    });
-    setInterval(() => {
-      document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
-      document.getElementById("score_zone").innerHTML = localStorage.getItem("score");
-    }, 1000)
-  </script> 
 </html>
