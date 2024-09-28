@@ -1,14 +1,42 @@
 //Initialisation des variables du jeu
 function initGame() {
-	var nbrctivities = 16;
+	var nbrctivities = 3;
 	//initialisation des variables locales
 	var etapesactivated = Array(nbrctivities).fill(0);
 	etapesactivated[0] = 1;
 	localStorage.setItem("etapeActivated", JSON.stringify(etapesactivated)); //NBR de 0 par étape (avec intro et conclusion)
 	localStorage.setItem("buttonActivated", JSON.stringify(etapesactivated)); //NBR de 0 par étape (avec intro et conclusion)
+	localStorage.setItem("scoreTotal", 0);
 	localStorage.setItem("scoreEnCours", 0);
 	localStorage.setItem("etapeEnCours", 0);
-	localStorage.setItem("datedebut", Date.now());	
+	localStorage.setItem("datedebut", Date.now());
+	localStorage.setItem("vainqueur", 1);	
+	localStorage.setItem("popupTexte", "");	
+}
+
+//Menu : Récupérer les étapes activées + active popup si besoin
+function initMenu() {
+	var array = JSON.parse(localStorage.getItem("etapeActivated"))
+	for (var i = 0; i < array.length; i++) {
+		if (array[i]=="0") {
+			document.getElementById("e"+i).classList.add("inactiv")
+		} else {
+			document.getElementById("e"+i).classList.add("activ")
+		}
+	  }
+	if (localStorage.getItem("vainqueur") == 1) {
+		document.getElementById("myPopup").innerHTML = localStorage.getItem("popupTexte");
+		document.getElementById("popup").style = "display:block";
+	}
+
+}
+
+//Menu : Désactiver le popup 
+function popupNone() {
+	document.getElementById("popup").style = "display:none";
+	localStorage.setItem("scoreTotal", parseInt(localStorage.getItem("scoreEnCours"))+parseInt(localStorage.getItem("scoreTotal")));
+	localStorage.setItem("scoreEnCours",0)
+	localStorage.setItem("vainqueur",0)
 }
 
 //validation d'une étape
@@ -17,15 +45,17 @@ function valid(etapevalidee, score) {
 	if (etapevalidee===0) {
 		initGame();
 	} 
+	//On signale pour activer le popup
+	localStorage.setItem("vainqueur",1);
 	//On permet l'accès à l'étape suivante
 	var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
 	etapes[etapevalidee+1] = 1;
 	localStorage.setItem("etapeActivated", JSON.stringify(etapes));
 	//Récupération du score et chargement du texte
-	localStorage.setItem("popupScore", score);
+	localStorage.setItem("scoreEnCours", score);
 	switch (etapevalidee) {
 		case 0:
-			localStorage.setItem("popupTexte", "Etape intro validée");
+			localStorage.setItem("popupTexte", "Mario t'a laissé quelques pièces pour bien commencer !");
 			break;
 		case 1:
 			localStorage.setItem("popupTexte", "Etape 1 validée");
