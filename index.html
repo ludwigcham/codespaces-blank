@@ -15,8 +15,8 @@
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
         console.log(etapes);
         if (etapes[0]==1){
-          $("#formulaire").style="display:none;";
-          $("#compteur").style="display:block;";
+          $("#formulaire").style.display = "none";
+          $("#compteur").style.display = "block"; 
         }
       });
       setInterval(() => {
