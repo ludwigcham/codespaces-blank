@@ -50,7 +50,7 @@ function valid(etapevalidee, score) {
 			vainqueur(etapevalidee, score);
 			return true;
 			break;
-		//Si étape 1 : Code suite au Rébu
+		//Si 1 : Code suite au Rébu
 		case 1:
 			var code = document.forms["RegForm"]["code"];
 			switch (code.value) {
@@ -70,12 +70,32 @@ function valid(etapevalidee, score) {
 					break;
 			}
 			break;
+		// Si 2 : Numéro de téléphone
 		case 2 :
+			var code = document.forms["RegForm"]["code"];
+			switch (code.value) {
+				case "":
+					alert("Remplir le numéro !");
+					code.focus();
+					return false;
+					break;
+				case "33763228554":
+					vainqueur(etapevalidee, score);
+					return true;
+					break;
+				default :
+					alert("Le numéro n'est pas bon !");
+					code.focus();
+					return false;
+					break;
+			}
+			break;
+		case 3 :
 			break;
 	}
 }
 
-//Etape OK - Vainqueur
+//Etape OK - Vainqueur + Texte du Popup
 function vainqueur(etapevalidee, score) {
 	//On signale pour activer le popup
 	localStorage.setItem("vainqueur",1);
@@ -91,6 +111,9 @@ function vainqueur(etapevalidee, score) {
 			break;
 		case 1:
 			localStorage.setItem("popupTexte", "Top ! C'est le bon code !");
+			break;
+		case 2:
+			localStorage.setItem("popupTexte", "Super ! Nous allons certainement pouvoir contacter Luigi prochainement");
 			break;
 	}
 }

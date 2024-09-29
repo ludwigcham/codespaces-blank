@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Super Mario Escape : La Quête des Étoiles oubliées</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" type="image/x-icon" href="/assets/logo.png">
+    <!-- Scripts de chargement de page -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/assets/script.js"></script>
+    <script> 
+      $(function(){
+        $("#compteur").load("/assets/tpt_compteurs.html"); 
+        $("#progression").load("/assets/tpt_progression.html");
+        var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+        console.log(etapes);
+        if (etapes[3]==1){//CHANGER LE NUMERO DE L'ETAPE POUR DESACTIVER LE FORMULAIRE
+          document.getElementById("formulaire").style.display = "none";
+        }
+      });
+      setInterval(() => {
+        document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
+        document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
+      }, 1000)
+    </script> 
+	</head>
+	<body onload="changecal()">
+		<!-- Haut de la page -->
+		<a href="menu.html"><img class="logo" src="/assets/logo.png"></a>
+		
+		<!-- Blocs centraux -->
+		<div id="liste_etape">
+		
+			<!-- 1 - Compteurs -->
+			<div id="compteur"></div>
+		
+			<!-- 2 - Epreuve/Texte -->
+			<div id="texte" class="carte activ">
+				<div class="container">
+                    <h2><b>Trouver le numéro de téléphone</b></h2>
+                    <p>Tu viens d'activer le système, Luigi est maintenant joignable via son numéro français que tu retrouveras grace à l'histoire suivante : 
+                    <br><br><i>Mario s'est préparé pour sa +33ème aventure, mais cette fois, il ne s'agit pas du Royaume Champignon. 
+                        Tout commencer à 7 heures du matin, lorsqu'un Goomba se présente à sa porte. Il lui annonce qu'il doit suivre un parcours en six étapes, chacune étant plus difficile que la précédente. 
+                        L'objetcif étant d'obtenir trois pièces d'or qu'il pourra alors glisser dans sa poche. 
+                        Sur la chemin, il rencontre Luigi qui lui rapelle que cela fait exactement 22 jours depuis leur dernière mission ensemble. 
+                        Plus tard, Mario atteint la huitième colline, où un vieux Toad lui parle d'un trésor caché il y a 5 ans maintenant. 
+                        Il escalade la colline, et à son sommet, il aperçoit 54 oiseaux volant au-dessus de lui, formant un étrange motif dans le ciel.</i>
+                    <br><br>Quel numéro as-tu trouvé ?<p>				
+				</div>
+			</div>
+		
+			<!-- 3 - Formulaire de resultat/Boutons -->
+			<div id="formulaire" class="carte activ">
+				<div class="container">
+				    <!-- Initialisation du jeu / Retour au menu (avec popup)-->
+                    <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(2,150);" class="outer">
+					    <div>
+                            <label for="code">Numéro à 11 chiffres :</label>
+                            <input class="result_case" type="text" id="code" size="11" name="code" />
+                        </div>
+                        <div class="buttons"><input class="button_slide" type="submit" value="Valider" name="Valider" /></div>
+				  </form>
+			  </div>
+            </div>
+		</div>
+
+        <!-- Bas de la page : Barre de progression -->
+		<div id="progression" style="display:none;"></div>
+	</body>
+</html>
