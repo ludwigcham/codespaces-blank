@@ -56,7 +56,7 @@ function valid(etapevalidee, score) {
 			switch (code) {
 				case "":
 					alert("Remplir le code !");
-					numero.focus();
+					code.focus();
 					return false;
 					break;
 				case "1400":
@@ -65,7 +65,7 @@ function valid(etapevalidee, score) {
 					break;
 				default :
 					alert("Le code n'est pas bon !");
-					numero.focus();
+					code.focus();
 					return false;
 					break;
 			}
