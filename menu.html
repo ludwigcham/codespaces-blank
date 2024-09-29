@@ -10,11 +10,14 @@
   <body onload="initMenu()">
 			  
 		<!-- Popup -->
-		<div id="popup" style="display:none;">
-			<div class="popup" onclick="popupNone()">Mamma mia !
-				<span class="popuptext" id="myPopup"></span>
-			</div>
-		</div>
+    <div style="display:none;" class="popup-overlay" id="popup" onclick="popupNone()">
+      <div class="popup" id="popup">
+        <span class="close" id="closePopup">&times;</span>
+        <div class="popup-content">
+          <p id="myPopup">Welcome to our website!</p>
+        </div>
+      </div>
+    </div>
 		
 		<!-- Haut de la page -->
 		<a href="menu.html"><img class="logo" src="/assets/logo.png"></a>

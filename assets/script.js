@@ -26,14 +26,14 @@ function initMenu() {
 	  }
 	if (localStorage.getItem("vainqueur") == 1) {
 		document.getElementById("myPopup").innerHTML = localStorage.getItem("popupTexte");
-		document.getElementById("popup").style = "display:block";
+		document.getElementById("popup").style.display = 'block';
 	}
 
 }
 
 //Menu : Désactiver le popup 
 function popupNone() {
-	document.getElementById("popup").style = "display:none";
+	document.getElementById("popup").style.display = "none";
 	localStorage.setItem("scoreTotal", parseInt(localStorage.getItem("scoreEnCours"))+parseInt(localStorage.getItem("scoreTotal")));
 	localStorage.setItem("scoreEnCours",0)
 	localStorage.setItem("vainqueur",0)
@@ -63,6 +63,12 @@ function valid(etapevalidee, score) {
 	}
 	console.log("etape validée");
 }
+
+
+
+
+
+
 
 
 
