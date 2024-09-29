@@ -53,7 +53,7 @@ function valid(etapevalidee, score) {
 		//Si étape 1 : Code suite au Rébu
 		case 1:
 			var code = document.forms["RegForm"]["code"];
-			switch (code) {
+			switch (code.value) {
 				case "":
 					alert("Remplir le code !");
 					code.focus();
