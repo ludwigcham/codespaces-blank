@@ -14,7 +14,7 @@
         $("#progression").load("/assets/tpt_progression.html");
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
         console.log(etapes);
-        if (etapes[3]==1){//CHANGER LE NUMERO DE L'ETAPE POUR DESACTIVER LE FORMULAIRE
+        if (etapes[4]==1){//CHANGER LE NUMERO DE L'ETAPE POUR DESACTIVER LE FORMULAIRE
           document.getElementById("formulaire").style.display = "none";
         }
       });

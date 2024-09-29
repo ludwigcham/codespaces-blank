@@ -113,7 +113,7 @@ function vainqueur(etapevalidee, score) {
 			localStorage.setItem("popupTexte", "Top ! C'est le bon code !");
 			break;
 		case 2:
-			localStorage.setItem("popupTexte", "Super ! Nous allons certainement pouvoir contacter Luigi prochainement");
+			localStorage.setItem("popupTexte", "Super ! Nous allons certainement pouvoir contacter Luigi prochainement !");
 			break;
 	}
 }
