@@ -59,10 +59,45 @@ function valid(etapevalidee, score) {
 			localStorage.setItem("popupTexte", "Mario t'a laissé quelques pièces pour bien commencer !");
 			break;
 		case 1:
-			localStorage.setItem("popupTexte", "Etape 1 validée");
+			localStorage.setItem("popupTexte", "Super nous allons pouvoir lancer une communication !");
 			break;
 	}
 	console.log("etape validée");
+}
+
+//Changer le calendrier pour signifier "hier" dans le rébu
+function changecal(){
+	var dateauj = new Date().getDate();
+	console.log(dateauj)
+	var datehier = dateauj-1
+	console.log(datehier)
+	switch (datehier) {
+		case 18: 
+			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/18th_icon-icons.com_68905.png";
+			break;
+		case 19:
+			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/19th_icon-icons.com_68917.png";
+			break;
+		case 20: 
+			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/20th_icon-icons.com_68911.png";
+			break;
+		case 21:
+			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/21st_icon-icons.com_68931.png";
+			break;
+		case 22: 
+			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/22nd_icon-icons.com_68934.png";
+			break;
+		case 23:
+			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/23rd_icon-icons.com_68908.png";
+			break;
+		case 24:
+			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/24th_icon-icons.com_68930.png";
+			break;
+		case 25:
+			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/25th_icon-icons.com_68907.png";
+			break;
+		default:
+	}
 }
 
 
@@ -347,40 +382,6 @@ function useindice(refetape, refindice) {
       break;
     default:
   }
-}
-
-function changecal(){
-	var dateauj = new Date().getDate();
-	console.log(dateauj)
-	var datehier = dateauj-1
-	console.log(datehier)
-	switch (datehier) {
-		case 18: 
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/18th_icon-icons.com_68905.png";
-			break;
-		case 19:
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/19th_icon-icons.com_68917.png";
-			break;
-		case 20: 
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/20th_icon-icons.com_68911.png";
-			break;
-		case 21:
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/21st_icon-icons.com_68931.png";
-			break;
-		case 22: 
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/22nd_icon-icons.com_68934.png";
-			break;
-		case 23:
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/23rd_icon-icons.com_68908.png";
-			break;
-		case 24:
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/24th_icon-icons.com_68930.png";
-			break;
-		case 25:
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/25th_icon-icons.com_68907.png";
-			break;
-		default:
-	}
 }
 
 function addCompteurs(){
