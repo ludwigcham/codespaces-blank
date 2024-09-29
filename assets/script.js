@@ -26,6 +26,7 @@ function initMenu() {
 	  }
 	if (localStorage.getItem("vainqueur") == 1) {
 		document.getElementById("myPopup").innerHTML = localStorage.getItem("popupTexte");
+		document.getElementById("myPopupscore").innerHTML = "+ " + localStorage.getItem("scoreEnCours") + " 🪙"
 		document.getElementById("popup").style.display = 'block';
 	}
 

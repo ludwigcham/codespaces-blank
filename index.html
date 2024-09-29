@@ -21,7 +21,7 @@
       });
       setInterval(() => {
         document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
-        document.getElementById("score_zone").innerHTML = localStorage.getItem("score");
+        document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
       }, 1000)
     </script> 
 	</head>
