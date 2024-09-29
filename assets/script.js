@@ -42,35 +42,62 @@ function popupNone() {
 
 //validation d'une étape
 function valid(etapevalidee, score) {
-	//Si 1ère étape : initialisation du jeu
-	if (etapevalidee===0) {
-		initGame();
-	} 
+	//On teste si les resultats sont les bons
+	switch (etapevalidee) {
+		//Si étape 0 : initialisation du jeu
+		case 0:
+			initGame();
+			vainqueur(etapevalidee, score)
+			break;
+		//Si étape 1 : Code suite au Rébu
+		case 1:
+			var code = document.forms["RegForm"]["code"];
+			switch (code) {
+				case "":
+					alert("Remplir le code !");
+					numero.focus();
+					return false;
+					break;
+				case "1400":
+					vainqueur(etapevalidee, score);
+					break;
+				default :
+					alert("Le code n'est pas bon !");
+					numero.focus();
+					return false;
+					break;
+			}
+			break;
+		case 2 :
+			break;
+	}
+	return true;
+}
+
+//Etape OK - Vainqueur
+function vainqueur(etapevalidee, score) {
 	//On signale pour activer le popup
 	localStorage.setItem("vainqueur",1);
 	//On permet l'accès à l'étape suivante
 	var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
 	etapes[etapevalidee+1] = 1;
 	localStorage.setItem("etapeActivated", JSON.stringify(etapes));
-	//Récupération du score et chargement du texte
+	//Récupération du score et chargement du texte du popup
 	localStorage.setItem("scoreEnCours", score);
 	switch (etapevalidee) {
 		case 0:
 			localStorage.setItem("popupTexte", "Mario t'a laissé quelques pièces pour bien commencer !");
 			break;
 		case 1:
-			localStorage.setItem("popupTexte", "Super nous allons pouvoir lancer une communication !");
+			localStorage.setItem("popupTexte", "Top ! C'est le bon code !");
 			break;
 	}
-	console.log("etape validée");
 }
 
 //Changer le calendrier pour signifier "hier" dans le rébu
 function changecal(){
 	var dateauj = new Date().getDate();
-	console.log(dateauj)
 	var datehier = dateauj-1
-	console.log(datehier)
 	switch (datehier) {
 		case 18: 
 			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/18th_icon-icons.com_68905.png";

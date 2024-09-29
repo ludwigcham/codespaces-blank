@@ -14,7 +14,7 @@
         $("#progression").load("/assets/tpt_progression.html");
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
         console.log(etapes);
-        if (etapes[0]==1){
+        if (etapes[1]==1){
           document.getElementById("formulaire").style.display = "none";
           document.getElementById("compteur").style.display = "block"; 
         }

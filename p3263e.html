@@ -14,7 +14,7 @@
         $("#progression").load("/assets/tpt_progression.html");
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
         console.log(etapes);
-        if (etapes[1]==1){//CHANGER LE NUMERO DE L'ETAPE POUR DESACTIVER LE FORMULAIRE
+        if (etapes[2]==1){//CHANGER LE NUMERO DE L'ETAPE POUR DESACTIVER LE FORMULAIRE
           document.getElementById("formulaire").style.display = "none";
         }
       });
@@ -44,7 +44,7 @@
                     <img id="i1" style="width:13%;" src="https://cdn.icon-icons.com/icons2/54/PNG/256/games_dice_craps_10813.png"> 
                     <img id="i2" style="width:13%;" src="https://cdn.icon-icons.com/icons2/1646/PNG/512/recipericeicon_109864.png">
                     <img id="i3" style="width:13%;" src=""> 
-                    <img id="i4" style="width:13%;" src="/assets/thon/jps">
+                    <img id="i4" style="width:13%;" src="/assets/thon.jpg">
                     <img id="i5" style="width:13%;" src="https://img.freepik.com/vecteurs-premium/note-mi-mi-lignes-portee-musicale-cle-sol-note-solfege_165079-3041.jpg">
                     <img id="i6" style="width:13%;" src="https://cdn.icon-icons.com/icons2/1356/PNG/512/if-king-2913101_88810.png">                        
                     <img id="i7" style="width:13%;" src="https://cdn.icon-icons.com/icons2/37/PNG/512/r_3467.png">
@@ -55,12 +55,25 @@
 			<!-- 3 - Formulaire de resultat/Boutons -->
 			<div id="formulaire" class="carte activ">
 				<div class="container">
-				  <!-- Initialisation du jeu / Retour au menu (avec popup)-->
-          <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(1,300);" class="outer">
-					  <div class="buttons"><input class="button_slide" type="submit" value="C'est parti !" name="Lance le jeu !" /></div>
+				    <!-- Initialisation du jeu / Retour au menu (avec popup)-->
+                    <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(1,300);" class="outer">
+					    <div class="buttons"><input class="button_slide" type="submit" value="C'est parti !" name="Lance le jeu !" /></div>
 				  </form>
+                  
+                  
+                  <form name="RegForm" action="l4s05m3.html" method="GET" onsubmit="return testit('ks63b93')" class="outer">
+                    <div>
+                      <label for="code">Code déchiffré :</label>
+                      <input class="result_case" type="text" id="code" size="11" name="code" />
+                    </div>
+                    <div class="buttons">
+                      <input class="button_slide" type="submit" value="Envoyer" name="Envoyer" />
+                    </div>
+                  </form>
+
+
 			  </div>
-      </div>
+            </div>
 		</div>
 
     <!-- Bas de la page : Barre de progression -->
