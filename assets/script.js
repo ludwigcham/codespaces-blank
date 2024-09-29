@@ -47,7 +47,8 @@ function valid(etapevalidee, score) {
 		//Si étape 0 : initialisation du jeu
 		case 0:
 			initGame();
-			vainqueur(etapevalidee, score)
+			vainqueur(etapevalidee, score);
+			return true;
 			break;
 		//Si étape 1 : Code suite au Rébu
 		case 1:
@@ -60,6 +61,7 @@ function valid(etapevalidee, score) {
 					break;
 				case "1400":
 					vainqueur(etapevalidee, score);
+					return true;
 					break;
 				default :
 					alert("Le code n'est pas bon !");
@@ -71,7 +73,6 @@ function valid(etapevalidee, score) {
 		case 2 :
 			break;
 	}
-	return true;
 }
 
 //Etape OK - Vainqueur
