@@ -37,7 +37,7 @@ label {
 }
 
 .activ {
-  background-color: #7CFC00;
+  background-color: #fadab4;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
@@ -117,7 +117,7 @@ label {
   font-family: system-ui;
   font-size: 2em;
   letter-spacing: 1px;
-  box-shadow: inset 400px 0 0 0 red;
+  box-shadow: inset 400px 0 0 0 #005ca9;
   color: white;
   -webkit-transition: ease-out 0.4s;
   -moz-transition: ease-out 0.4s;
