@@ -10,8 +10,7 @@
     <script src="/assets/script.js"></script>
     <script> 
       $(function(){
-        $("#compteur").load("/assets/tpt_compteurs.html"); 
-        $("#progression").load("/assets/tpt_progression.html");
+        $("#compteur").load("/assets/tpt_compteurs.html");
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
         console.log(etapes);
         if (etapes[4]==1){//CHANGER LE NUMERO DE L'ETAPE POUR DESACTIVER LE FORMULAIRE
@@ -63,8 +62,5 @@
 			  </div>
             </div>
 		</div>
-
-        <!-- Bas de la page : Barre de progression -->
-		<div id="progression" style="display:none;"></div>
 	</body>
 </html>
