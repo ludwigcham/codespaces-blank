@@ -75,6 +75,14 @@ label {
   transition: ease-out 0.4s;
 }
 
+/* Bouton indices */
+.button_indice {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+
 .result_case {
   color: black;
   border: 5px solid #005ca9;
@@ -121,8 +129,6 @@ label {
   cursor: pointer;
   color: #333;
 }
-
-
 
 
 
