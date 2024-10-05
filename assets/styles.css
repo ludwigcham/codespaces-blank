@@ -76,7 +76,6 @@ label {
 }
 
 .result_case {
-  box-shadow: inset 400px 0 0 0 #005ca9;
   color: black;
   border: 5px solid #005ca9;
   border-radius: 10px;
