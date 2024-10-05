@@ -19,13 +19,14 @@
         }
       });
       setInterval(() => {
+        var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
         document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
         document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
-        document.getElementById("stape").innerHTML = "1 / " + etapes.length-1;
+        document.getElementById("stape").innerHTML = "1 / " +  etapes.length-1;
       }, 1000)
     </script> 
 	</head>
-	<body onload="changecal()">
+	<body onload="chargePage('p3263e')">
 		<!-- Haut de la page -->
 		<a href="menu.html"><img class="logo" src="/assets/logo.png"></a>
 		
@@ -41,6 +42,7 @@
 				  <h2 style="display:inline;">Indice(s) (-100 </h2>
 				  <img style="width:5%;display:inline;" src="/assets/mario-coins.gif"/>
 				  <h2 style="display:inline;"> ) : </h2>
+          <div id="indicesBox" style="display:inline;"></div>
 			  </div>
       </div>
 		

@@ -12,24 +12,48 @@ function initGame() {
 	localStorage.setItem("datedebut", Date.now());
 	localStorage.setItem("vainqueur", 1);	
 	localStorage.setItem("popupTexte", "");	
+	//Gestion des indices
+	var indicesActivated = Array(nbrctivities);
+	var indicesTexte = Array(nbrctivities);
+		//Etape 0 => Pas d'indices
+	indicesActivated[0] = Array();
+	indicesTexte[0] = Array();
+		//Etape 1 => 2 indices
+	indicesActivated[1] = Array(2).fill(0);
+	indicesTexte[1] = Array(2);
+	indicesTexte[1][0] = "Le calendrier de ce rébu change tous les jours !";
+	indicesTexte[1][1] = "C'est un MI !";
+		//Chargement des variables en stockage
+	localStorage.setItem("indicesActivated", JSON.stringify(indicesActivated)); 
+	localStorage.setItem("indicesTexte", JSON.stringify(indicesTexte)); 
 }
 
-//Menu : Récupérer les étapes activées + active popup si besoin
-function initMenu() {
-	var array = JSON.parse(localStorage.getItem("etapeActivated"))
-	for (var i = 0; i < array.length; i++) {
-		if (array[i]=="0") {
-			document.getElementById("e"+i).classList.add("inactiv")
-		} else {
-			document.getElementById("e"+i).classList.add("activ")
-		}
-	  }
-	if (localStorage.getItem("vainqueur") == 1) {
-		document.getElementById("myPopup").innerHTML = localStorage.getItem("popupTexte");
-		document.getElementById("myPopupscore").innerHTML = "+ " + localStorage.getItem("scoreEnCours") + " 🪙"
-		document.getElementById("popup").style.display = 'block';
+//chargePage : Au chargement de la page en fonction de la page 
+function chargePage(numPage) {
+	switch(numPage) {
+		case "menu" :
+			var array = JSON.parse(localStorage.getItem("etapeActivated"))
+			for (var i = 0; i < array.length; i++) {
+				if (array[i]=="0") {
+					document.getElementById("e"+i).classList.add("inactiv")
+				} else {
+					document.getElementById("e"+i).classList.add("activ")
+				}
+			  }
+			if (localStorage.getItem("vainqueur") == 1) {
+				document.getElementById("myPopup").innerHTML = localStorage.getItem("popupTexte");
+				document.getElementById("myPopupscore").innerHTML = "+ " + localStorage.getItem("scoreEnCours") + " 🪙"
+				document.getElementById("popup").style.display = 'block';
+			}
+			break;
+		case "p3263e" :
+			var dateauj = new Date().getDate();
+			var datehier = dateauj-1
+			document.getElementById("i3").src="/assets/cal/" + datehier + ".png"
+			break;
+		default:
+			break;
 	}
-
 }
 
 //Menu : Désactiver le popup 
@@ -117,43 +141,6 @@ function vainqueur(etapevalidee, score) {
 			break;
 	}
 }
-
-//Changer le calendrier pour signifier "hier" dans le rébu
-function changecal(){
-	var dateauj = new Date().getDate();
-	var datehier = dateauj-1
-	switch (datehier) {
-		case 18: 
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/18th_icon-icons.com_68905.png";
-			break;
-		case 19:
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/19th_icon-icons.com_68917.png";
-			break;
-		case 20: 
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/20th_icon-icons.com_68911.png";
-			break;
-		case 21:
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/21st_icon-icons.com_68931.png";
-			break;
-		case 22: 
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/22nd_icon-icons.com_68934.png";
-			break;
-		case 23:
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/23rd_icon-icons.com_68908.png";
-			break;
-		case 24:
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/24th_icon-icons.com_68930.png";
-			break;
-		case 25:
-			document.getElementById("i3").src="https://cdn.icon-icons.com/icons2/885/PNG/512/25th_icon-icons.com_68907.png";
-			break;
-		default:
-	}
-}
-
-
-
-
 
 
 
