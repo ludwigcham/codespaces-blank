@@ -59,7 +59,7 @@
           <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(1,300);" class="outer">
 					  <div>
               <label for="code"><b>Code à 4 chiffres :</b></label>
-              <input class="result_case" type="number" pattern="[0-9]*" id="code" size="4" name="code" />
+              <input class="result_case" type="number" pattern="[0-9]*" min="0" max="9999" id="code" name="code" />
             </div>
             <div class="buttons"><input class="button_slide" type="submit" value="Valider" name="Valider" /></div>
 				  </form>
