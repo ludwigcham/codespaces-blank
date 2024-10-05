@@ -48,7 +48,7 @@ function chargePage(numPage) {
 			break;
 		case "p3263e" :
 			var dateauj = new Date().getDate();
-			document.getElementById("i3").src='/assets/cal/' + dateauj-1 + '.png'
+			document.getElementById("i3").src='/assets/cal/' + dateauj-1 + '.png';
 			break;
 		default:
 			break;
