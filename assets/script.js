@@ -48,7 +48,8 @@ function chargePage(numPage) {
 			break;
 		case "p3263e" :
 			var dateauj = new Date().getDate();
-			document.getElementById("i3").src='/assets/cal/' + dateauj-1 + '.png';
+			var datehier = dateauj-1;
+			document.getElementById("i3").src="/assets/cal/" + datehier + ".png";
 			break;
 		default:
 			break;
@@ -61,6 +62,19 @@ function popupNone() {
 	localStorage.setItem("scoreTotal", parseInt(localStorage.getItem("scoreEnCours"))+parseInt(localStorage.getItem("scoreTotal")));
 	localStorage.setItem("scoreEnCours",0)
 	localStorage.setItem("vainqueur",0)
+}
+
+//Popup Indice 
+function popupIndice(numEtape, numIndice) {
+	var indicesActivated = JSON.parse(localStorage.getItem("indicesActivated"));
+	var indicesTexte = JSON.parse(localStorage.getItem("indicesTexte"));	
+	if (indicesActivated[numEtape][numIndice] == 0) {
+		indicesActivated[numEtape][numIndice] = 1;
+		localStorage.setItem("indicesActivated", JSON.stringify(indicesActivated));
+		localStorage.setItem("scoreTotal", parseInt(localStorage.getItem("scoreTotal"))-100);
+	}
+	document.getElementById("myPopupIndice").innerHTML = indicesTexte[numEtape][numIndice];
+	document.getElementById("popup").style.display = 'block';	
 }
 
 //validation d'une étape
@@ -140,6 +154,10 @@ function vainqueur(etapevalidee, score) {
 			break;
 	}
 }
+
+
+
+
 
 
 
