@@ -21,6 +21,7 @@
       setInterval(() => {
         document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
         document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
+        document.getElementById("stape").innerHTML = "1 / " + etapes.length-1;
       }, 1000)
     </script> 
 	</head>
