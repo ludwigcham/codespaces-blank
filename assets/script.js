@@ -50,10 +50,32 @@ function chargePage(numPage) {
 			var dateauj = new Date().getDate();
 			var datehier = dateauj-1;
 			document.getElementById("i3").src="/assets/cal/" + datehier + ".png";
+			//Chargement des indices :
+			ChargeIndices(1);
 			break;
 		default:
 			break;
 	}
+}
+
+//Chargement des indices
+function ChargeIndices(numPage) {
+	var indicesActivated = JSON.parse(localStorage.getItem("indicesActivated"));
+	var indicesTexte = JSON.parse(localStorage.getItem("indicesTexte"));
+	//On boucle sur tous les indices en questions
+	var indicesActivated_e = indicesActivated[numPage];
+	var indicesTexte_e = indicesTexte[numPage];
+	var TexteHtml = "";
+	for (var i = 0; i < indicesActivated_e.length; i++) {
+		ind = i+1;
+		//Est-ce qu'il est free ?
+		if (indicesActivated_e[i]==1) {
+			TexteHtml = TexteHtml + '<button id="' + numPage + '_' + i + '" type="button" style="display:inline;" class="button_indice button_indice_on" onclick="popupIndice(' + numPage + ',' + i + ')">' + ind + '</button>';
+		} else {
+			TexteHtml = TexteHtml + '<button id="' + numPage + '_' + i + '" type="button" style="display:inline;" class="button_indice" onclick="popupIndice(' + numPage + ',' + i + ')">' + ind + '</button>';
+		}
+	}
+	document.getElementById("indicesBoxButton").innerHTML = TexteHtml;
 }
 
 //Menu : Désactiver le popup 
@@ -72,9 +94,15 @@ function popupIndice(numEtape, numIndice) {
 		indicesActivated[numEtape][numIndice] = 1;
 		localStorage.setItem("indicesActivated", JSON.stringify(indicesActivated));
 		localStorage.setItem("scoreTotal", parseInt(localStorage.getItem("scoreTotal"))-100);
+		var boxIndiceId = numEtape + '_' + numIndice;
+		document.getElementById(boxIndiceId).classList.add("button_indice_on");
 	}
 	document.getElementById("myPopupIndice").innerHTML = indicesTexte[numEtape][numIndice];
 	document.getElementById("popup").style.display = 'block';	
+}
+
+function popupIndiceNone() {
+	document.getElementById("popup").style.display = "none";
 }
 
 //validation d'une étape

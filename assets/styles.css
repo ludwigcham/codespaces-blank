@@ -85,8 +85,12 @@ label {
   height: 70px;
   width: 70px;
   border-radius: 50%;
-  border: 1px solid #000;
+  border: 2px solid #005ca9;
   font-size: 2em;
+}
+
+.button_indice_on {
+  background-color: #005ca9;
 }
 
 .result_case {
