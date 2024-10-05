@@ -22,7 +22,7 @@ p {
 
 label {
   font-family: system-ui;
-  font-size: 2em;
+  font-size: 3em;
 }
 
 /*CLASSES*/
@@ -73,6 +73,18 @@ label {
   -webkit-transition: ease-out 0.4s;
   -moz-transition: ease-out 0.4s;
   transition: ease-out 0.4s;
+}
+
+.result_case {
+  box-shadow: inset 400px 0 0 0 #005ca9;
+  color: black;
+  border: 5px solid #005ca9;
+  border-radius: 10px;
+  padding: 5px 5px;
+  display: inline-block;
+  font-family: system-ui;
+  letter-spacing: 1px;
+  font-size: 3em;
 }
 
 /*  Popup container */
@@ -127,17 +139,7 @@ label {
 
 
 
-.result_case {
-  box-shadow: inset 400px 0 0 0 #005ca9;
-  color: black;
-  border: 5px solid #005ca9;
-  border-radius: 10px;
-  padding: 5px 5px;
-  display: inline-block;
-  font-family: system-ui;
-  letter-spacing: 1px;
-  font-size: 4em;
-}
+
 
 
 
