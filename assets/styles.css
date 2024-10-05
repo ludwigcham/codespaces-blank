@@ -35,6 +35,10 @@ label {
 	width: 100%;
 }
 
+.mmligne {
+  display:inline;
+}
+
 /*  Carte et bouttons*/
 .carte {
   margin-top: 10px;
