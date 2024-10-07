@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Super Mario Escape : La Quête des Étoiles disparues</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" type="image/x-icon" href="/assets/logo.png">
+    <!-- Scripts de chargement de page -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/assets/script.js"></script>
+    <script> 
+      $(function(){
+        $("#compteur").load("/assets/tpt_compteurs.html");
+        var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+        console.log(etapes);
+        if (etapes[1]==1){
+          document.getElementById("formulaire").style.display = "none";
+          document.getElementById("compteur").style.display = "block"; 
+        }
+      });
+      setInterval(() => {
+        document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
+        document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
+      }, 1000)
+    </script> 
+	</head>
+	<body onload="chargePage('cprt')">
+		<!-- Haut de la page -->
+		<a href="menu.html"><img class="logo" src="/assets/logo.png"></a>
+		
+		<!-- Blocs centraux -->
+		<div id="liste_etape">
+		
+			<!-- 1 - Si ce n'est pas la première fois : -->
+			<div id="texte" class="carte activ">
+				<div class="container">
+					<h2><b>Ce n'est pas la 1ère fois que tu viens ici !</b></h2>
+					<p>Et tu as bien fais de revenir ! Tu as gagné 200 <img style="width:5%;" src="/assets/mario-coins.gif"/>
+					</p>
+				</div>
+			</div>
+
+		
+			<!-- 2 - Epreuve/Texte -->
+			<div id="texte" class="carte activ">
+				<div class="container">
+					<h2><b>La quête des étoiles disparues</b></h2><img style="width:5%;" src="/assets/mario-coins.gif"/>
+					<br><h2><b>Copyright © 2024</b></h2>
+					<p>Développé avec amour et champignons magiques par Wolwig
+					<br>Cet escape game est le fruit d’un long voyage à travers le Royaume Champignon. De l’idéation aux pixels, chaque 
+					brique a été posée avec soin (et quelques coquilles de tortue bien placées). Pendant près de deux mois, entre brainstormings 
+					épiques et détours par des tubes verts, le créateur a couru comme un Mario en quête de pièces d’or pour rendre ce projet 
+					unique et personnalisé.
+					<br><br>Inspiré par l’univers coloré et intemporel de Mario, ce jeu a été conçu pour amuser, que ce soit en fouillant les coins sombres de l’appartement pour trouver des objets cachés, 
+					ou en résolvant des énigmes dignes du plus grand des plombiers, chaque détail a été pensé pour offrir une expérience immersive.
+					<br><br>Les solutions techniques ont évolué au fil du parcours, sautant d’idée en idée comme un Luigi survolté. 
+					Le site web, tout comme l’escape game en lui-même, a été façonné pour qu’il reflète au mieux notre relation et le plaisir qui ont guidé ce projet. 
+					Ce n’est pas un simple jeu, mais un hommage aux heures passées ensembles.
+					<br><br>Merci d’avoir joué, et rappelle toi : quand on joue à ce jeu, c’est toujours It’s-a me, Mario! qui l’emporte.
+					</p>
+					<br><br><h2><b>Remerciements</b></h2>
+					</p>Anne QUANTIN : Conception de la boite mystère et soirée idéations
+						<br>Laura LIMOUZIN : Test de l'application web et des interactions
+						<br>Ludwig CHAMOULEAU : Tout le reste
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

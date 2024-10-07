@@ -1,6 +1,6 @@
 //Initialisation des variables du jeu
 function initGame() {
-	var nbrctivities = 3;
+	var nbrctivities = 5;
 	//initialisation des variables locales
 	var etapesactivated = Array(nbrctivities).fill(0);
 	etapesactivated[0] = 1;
@@ -23,6 +23,10 @@ function initGame() {
 	indicesTexte[1] = Array(2);
 	indicesTexte[1][0] = "Le calendrier de ce rébu change tous les jours !";
 	indicesTexte[1][1] = "C'est un MI !";
+		//Etape 3 =>  1 indice
+	indicesActivated[3] = Array(1).fill(0);
+	indicesTexte[3] = Array(1);
+	indicesTexte[3][0] = "C'est une blague ?! Quel ingrédient utilises-tu dans ta soupe favorite ?";
 		//Chargement des variables en stockage
 	localStorage.setItem("indicesActivated", JSON.stringify(indicesActivated)); 
 	localStorage.setItem("indicesTexte", JSON.stringify(indicesTexte)); 
@@ -52,6 +56,10 @@ function chargePage(numPage) {
 			document.getElementById("i3").src="/assets/cal/" + datehier + ".png";
 			//Chargement des indices :
 			ChargeIndices(1);
+			break;
+		case "g4144h" :
+			//Chargement des indices :
+			ChargeIndices(3);
 			break;
 		default:
 			break;
