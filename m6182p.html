@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Super Mario Escape : La Quête des Étoiles disparues</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" type="image/x-icon" href="/assets/logo.png">
+    <!-- Scripts de chargement de page -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/assets/script.js"></script>
+    <script> 
+      $(function(){
+        $("#compteur").load("/assets/tpt_compteurs.html");
+        var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+        console.log(etapes);
+        if (etapes[5]==1){//CHANGER LE NUMERO DE L'ETAPE POUR DESACTIVER LE FORMULAIRE
+          document.getElementById("formulaire").style.display = "none";
+          document.getElementById("compteur").style.display = "block"; 
+        }
+      });
+      setInterval(() => {
+        var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+        document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
+        document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
+        document.getElementById("stape").innerHTML = '2 / ' +  etapes.length;
+      }, 1000)
+    </script> 
+	</head>
+	<body onload="chargePage('m6182p')">
+
+    <!-- Popup Indice-->
+    <div style="display:none;" class="popup-overlay" id="popup" onclick="popupIndiceNone()">
+      <div class="popup" id="popup">
+        <span class="close" id="closePopup">&times;</span>
+        <div class="popup-content">
+          <p id="myPopupIndice"></p>
+        </div>
+      </div>
+    </div>
+
+		<!-- Haut de la page -->
+		<a href="menu.html"><img class="logo" src="/assets/logo.png"></a>
+		
+		<!-- Blocs centraux -->
+		<div id="liste_etape">
+		
+			<!-- 1 - Compteurs -->
+			<div id="compteur"></div>
+		
+			<!-- 2 - Epreuve/Texte -->
+			<div id="texte" class="carte activ">
+				<div class="container">
+          <h2><b>Trouver le numéro de téléphone</b></h2>
+          <p>Tu viens d'activer le système, Luigi est maintenant joignable via son numéro français que tu retrouveras grace à l'histoire suivante : 
+          <p>	
+          <!-- MasterMind -->  
+          
+          <div class="game">
+            <table>
+                <tbody id="plateau">
+
+                </tbody>
+            </table>
+            <p>
+              &nbsp;
+            </p>
+            <table>
+                <tbody id="colorSelector">
+
+                </tbody>
+            </table>
+          </div>
+          <div class="options">
+            <div id="result" class="result">
+            </div>
+            <div class="menus">
+                <div class="menu" onclick="MasterMind.startGame('easy');">
+                    Jouer "Facile"
+                </div>
+                <div class="menu" onclick="MasterMind.startGame('normal');">
+                    Jouer "Normal"
+                </div>
+                <div class="menu" onclick="MasterMind.startGame('hard');">
+                    Jouer "Difficile"
+                </div>
+                <div class="menu" onclick="MasterMind.startGame('extreme');">
+                    Jouer "Extr&ecirc;me"
+                </div>
+            </div>
+          </div>
+				</div>
+			</div>
+		
+      <!-- 3 - Indices -->
+			<div style="display:none;" id="indices" class="carte activ">
+      </div>
+		
+			<!-- 4 - Formulaire de resultat/Boutons -->
+			<div id="formulaire" class="carte activ">
+				<div class="container">
+          <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(2,150);" class="outer">
+					  <div>
+              <label for="code"><b>Numéro à 11 chiffres :</b></label>
+              <input class="result_case" type="number" pattern="[0-9]*" min="0" max="33999999999" id="code" name="code" />
+            </div>
+            <div class="buttons"><input class="button_slide" type="submit" value="Valider" name="Valider" /></div>
+				  </form>
+			  </div>
+      </div>
+		</div>
+	</body>
+</html>
