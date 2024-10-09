@@ -3,13 +3,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Super Mario Escape : La Quête des Étoiles disparues</title>
-		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="stylesheet" href="styles.css" />
 		<link rel="icon" type="image/x-icon" href="/assets/logo.png">
     <!-- Scripts de chargement de page -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="/assets/script.js"></script>
+    <script src="script.js"></script>
     <script> 
       $(function(){
+        MasterMind.initialise();
         $("#compteur").load("/assets/tpt_compteurs.html");
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
         console.log(etapes);
@@ -54,7 +55,6 @@
           <p>Tu viens d'activer le système, Luigi est maintenant joignable via son numéro français que tu retrouveras grace à l'histoire suivante : 
           <p>	
           <!-- MasterMind -->  
-          
           <div class="game">
             <table>
                 <tbody id="plateau">
@@ -62,31 +62,26 @@
                 </tbody>
             </table>
             <p>
-              &nbsp;
             </p>
             <table>
+                <tbody id="colorSelectorNumer">
+                  <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                  </tr>
+                </tbody>
                 <tbody id="colorSelector">
 
                 </tbody>
             </table>
-          </div>
-          <div class="options">
-            <div id="result" class="result">
-            </div>
-            <div class="menus">
-                <div class="menu" onclick="MasterMind.startGame('easy');">
-                    Jouer "Facile"
-                </div>
-                <div class="menu" onclick="MasterMind.startGame('normal');">
-                    Jouer "Normal"
-                </div>
-                <div class="menu" onclick="MasterMind.startGame('hard');">
-                    Jouer "Difficile"
-                </div>
-                <div class="menu" onclick="MasterMind.startGame('extreme');">
-                    Jouer "Extr&ecirc;me"
-                </div>
-            </div>
           </div>
 				</div>
 			</div>

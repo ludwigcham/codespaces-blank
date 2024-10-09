@@ -168,7 +168,25 @@ function valid(etapevalidee, score) {
 					break;
 			}
 			break;
+		// Si 3 : Ingrédient par sms -> Code retour
 		case 3 :
+			var code = document.forms["RegForm"]["code"];
+			switch (code.value) {
+				case "":
+					alert("Remplir le numéro !");
+					code.focus();
+					return false;
+					break;
+				case "33763228554":
+					vainqueur(etapevalidee, score);
+					return true;
+					break;
+				default :
+					alert("Le numéro n'est pas bon !");
+					code.focus();
+					return false;
+					break;
+			}
 			break;
 	}
 }
@@ -207,29 +225,8 @@ var MasterMind = {
     name: 'MasterMind',
 
     difficulties: {
-        easy: {
-            lines: 12,
-            columns: 4,
-            colors: 4,
-            double: false,
-            locCheck: true,
-        },
-        normal: {
-            lines: 12,
-            columns: 4,
-            colors: 6,
-            double: true,
-            locCheck: true,
-        },
         hard: {
-            lines: 12,
-            columns: 5,
-            colors: 8,
-            double: true,
-            locCheck: false,
-        },
-        extreme: {
-            lines: 12,
+            lines: 8,
             columns: 6,
             colors: 10,
             double: true,
@@ -238,20 +235,16 @@ var MasterMind = {
     },
 
     colors: {
-        1: '#000000', // noir
-        2: '#FFFFFF', // blanc
-        3: '#CC3333', // rouge
-        4: '#ff9600', // orange
-        5: '#fff000', // jaune
-        6: '#0005c2', // bleu
-        7: '#00d8d5', // cyan
-        8: '#8a05fa', // violet
-    },
-
-    settings: {
-        lines: 12, // lignes disponibles pour arriver au résultat
-        columns: 4, // colonnes de couleurs
-        colors: 6, // couleurs disponibles
+        1: '#E92222', // rouge
+        2: '#F44900', // orange
+        3: '#C0B81C', // jaune
+        4: '#109932', // vert foncé
+        5: '#73A37F', // vert clair
+        6: '#13666F', // bleu azur
+        7: '#B478DE', // violet pastel
+        8: '#501C72', // violet
+        9: '#4A0244', // violet foncé
+        10: '#97245A', // rose
     },
 
     game: {
@@ -262,11 +255,11 @@ var MasterMind = {
     },
 
     initialise: function() {
-        this.startGame('easy');
+        this.startGame();
     },
 
-    startGame: function(difficulty) {
-        this.settings = this.difficulties[difficulty];
+    startGame: function() {
+        this.settings = this.difficulties['hard'];
         this.drawGameBoard();
         this.resetGame();
         this.defineSoluce();
@@ -343,13 +336,16 @@ var MasterMind = {
 
     defineSoluce: function() {
         this.game['soluce'] = new Array();
-        for (i = 1; i <= this.settings['columns']; i++) {
-            color = parseInt(Math.random()*this.settings['colors'])+1;
-            while (this.settings['double'] == false && this.game['soluce'].indexOf(color) != -1) {
-                color = parseInt(Math.random()*this.settings['colors'])+1;
-            }
-            this.game['soluce'][i] = color;
-        }
+        /*Définition du code*/
+        this.game['soluce'][1] = 1;
+        this.game['soluce'][2] = 2;
+        this.game['soluce'][3] = 3;
+        this.game['soluce'][4] = 4;
+        this.game['soluce'][5] = 5;
+        this.game['soluce'][6] = 6;
+        this.game['soluce'][7] = 7;
+        this.game['soluce'][8] = 8;
+        
     },
 
     selectColor: function(color) {
@@ -418,25 +414,28 @@ var MasterMind = {
         /* Duplique la solution pour pouvoir la modifier sans alterer l'originale */
         soluce = this.game['soluce'].slice(0);
 
-        /* Verifie le mode de verification */
-        if (this.settings['locCheck'] === false) {
-            /* Initialise les variables de verification */
+        /* Initialise les variables de verification */
             correct = 0;
             misplaced = 0;
+            tabres = new Array();
 
             /* Verifie les pions bien places */
             for (i = 1; i <= this.settings['columns']; i++) {
                 if (this.game['selection'][i] == soluce[i]) {
                     correct++;
                     soluce[i] = 0;
+                    tabres[i]=2;
                     this.game['selection'][i] = 0;
+                } else {
+                    tabres[i]=0;
                 }
             }
 
             /* Verifie si tous les pions sont biens places, et auquel cas, afficher la victoire */
             if (correct == this.settings['columns']) {
                 /* Utilise un return pour sortir de la method et ne pas continuer la verification */
-                return this.displayWin();
+                document.getElementById("myPopupIndice").innerHTML = "Trouvé";
+	              return document.getElementById("popup").style.display = 'block';	
             }
 
             /* Verifie les pions mal places, parmi les pions restant */
@@ -450,60 +449,23 @@ var MasterMind = {
                     this.game['selection'][i] = 0;
                     soluce[loc] = 0;
                     misplaced++;
+                    tabres[i]=1;
                 }
             }
 
-            /* Affiche le bon nombre de pions bien places */
-            for (i = 1; i <= correct; i++) {
+            /* Affiche les pions bien ou mal placés */
+            for (i = 1; i <= this.settings['columns']; i++) {
                 pion = document.createElement('div');
-                pion.className = 'correct';
+                //S'il est bien placé
+                if (tabres[i]==2) {
+                  pion.className = 'correct';
+                } else if (tabres[i]==1) {
+                  pion.className = 'misplaced';
+                } else {
+                  pion.innerHTML="&times;";
+                }
                 document.getElementById('result-'+this.game['turn']+'-'+i).appendChild(pion);
             }
-
-            /* Affiche le bon nombre de pions mal places */
-            for (j = i; j < i+misplaced; j++) {
-                pion = document.createElement('div');
-                pion.className = 'misplaced';
-                document.getElementById('result-'+this.game['turn']+'-'+j).appendChild(pion);
-            }
-
-        } else {
-            correct = 0;
-
-            /* Check well placed */
-            for (i = 1; i <= this.settings['columns']; i++) {
-                if (this.game['selection'][i] == this.game['soluce'][i]) {
-                    //console.log('correct pos '+i+' : '+soluce[i]);
-                    correct++;
-                    this.game['selection'][i] = 0;
-                    soluce[i] = 0;
-
-                    pion = document.createElement('div');
-                    pion.className = 'correct';
-                    document.getElementById('result-'+this.game['turn']+'-'+i).appendChild(pion);
-                }
-            }
-
-            /* Check win */
-            if (correct == this.settings['columns'])
-                return this.displayWin();
-
-            /* Check misplaced */
-            for (i = 1; i <= this.settings['columns']; i++) {
-                if (this.game['selection'][i] == 0)
-                    continue;
-                loc = soluce.indexOf(this.game['selection'][i]);
-
-                if (loc != -1) {
-                    this.game['selection'][i] = 0;
-                    soluce[loc] = 0;
-
-                    pion = document.createElement('div');
-                    pion.className = 'misplaced';
-                    document.getElementById('result-'+this.game['turn']+'-'+i).appendChild(pion);
-                }
-            }
-        }
 
         /* Prepare le jeu pour le tour suivant */
 
@@ -532,25 +494,15 @@ var MasterMind = {
         document.getElementById('turn-'+this.game['turn']+'-1').className = 'selected';
     },
 
-    displayWin: function() {
-        /* Affiche le resultat dans l'espace dedie, en couleur */
-        document.getElementById('result').innerHTML = 'Gagn&eacute;';
-        document.getElementById('result').style.color = '#43b456';
 
-        /* Affiche le marquage specific a la victoire sur la ligne courante */
-        document.getElementById('turn-'+this.game['turn']).className = 'win';
-
-        /* Marque la fin de la partie en indiquant une valeur null au tour en cours */
-        this.game['turn'] = -1;
-    },
 
     displayLose: function() {
         /* Affiche le resultat dans l'espace dedie, en couleur */
-        document.getElementById('result').innerHTML = 'Perdu';
-        document.getElementById('result').style.color = '#CC3333';
+        document.getElementById("myPopupIndice").innerHTML = "Perdu";
+	      document.getElementById("popup").style.display = 'block';
 
         /* Marque la fin de la partie en indiquant une valeur null au tour en cours */
-        this.game['turn'] = -1;
+        this.Initialise();
     },
 };
 
