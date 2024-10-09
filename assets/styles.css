@@ -151,7 +151,7 @@ label {
 
 /* game board */
 table {border-collapse:collapse;}
-table td {border:solid 1px #888; padding:4px; text-align:center;}
+table td {border:solid 1px #888; padding:4px; text-align:center;font-family: system-ui;font-size: 2em;}
 table tr.selected td {background:#cdcdcd;}
 table tr.selected td.selected {background:#e8dda5;}
 table tr td.valid {display:none;}
@@ -166,7 +166,7 @@ table tr.win td {background:#43b456;}
 /* menu */
 .menus .menu {padding:10px 25px; margin:8px; background:#4366b4; color:white; cursor:pointer; width:200px;}
 
-.game {margin: auto;width: 50%;border: 3px solid green;padding: 10px;}
+.game {margin: auto;width: 78%;border: 3px solid green;padding: 10px;}
 
 
 
