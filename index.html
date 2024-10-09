@@ -19,6 +19,7 @@
         }
       });
       setInterval(() => {
+		var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
         document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
         document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
 		document.getElementById("stape").innerHTML = '0 / ' +  etapes.length;
