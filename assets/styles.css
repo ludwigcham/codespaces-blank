@@ -1,7 +1,7 @@
 /*BALISES*/
 body{
   padding: 15px;
-  background-image: url("/assets/background.png");
+  background-color: linear-gradient(#23bee0, #0b7fc6);
   text-align: center;
 }
 
