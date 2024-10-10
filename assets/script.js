@@ -831,5 +831,11 @@ function parseMillisecondsIntoReadableTime(milliseconds){
   var absoluteSeconds = Math.floor(seconds);
   var s = absoluteSeconds > 9 ? absoluteSeconds : '0' + absoluteSeconds;
 
-  return h + ':' + m + ':' + s;
+  if (h>0) {
+    return h + ':' + m + ':' + s;
+  } else if (m>0) {
+    return m + ':' + s;
+  } else {
+    return m + ':' + s;
+  } 
 }
