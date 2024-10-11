@@ -11,6 +11,7 @@
     <script> 
       $(function(){
         $("#compteur").load("/assets/tpt_compteurs.html");
+		$("#menu").load("/assets/tpt_menu.html");
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
         console.log(etapes);
         if (etapes[1]==1){
@@ -28,7 +29,7 @@
 	</head>
 	<body>
 		<!-- Haut de la page -->
-		<a href="menu.html"><img class="logo" src="/assets/titre.png"></a>
+		<div id="menu"></div>
 		
 		<!-- Blocs centraux -->
 		<div id="liste_etape">
