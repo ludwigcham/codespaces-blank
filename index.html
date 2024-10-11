@@ -17,6 +17,8 @@
         if (etapes[1]==1){
           document.getElementById("formulaire").style.display = "none";
           document.getElementById("compteur").style.display = "block"; 
+		  document.getElementById("menu").style.marginBottom = "0%"; 
+		  document.getElementById("compteur").style.marginBottom = "15%";
         }
       });
       setInterval(() => {
@@ -29,7 +31,7 @@
 	</head>
 	<body>
 		<!-- Haut de la page -->
-		<div id="menu"></div>
+		<div id="menu" style="margin-bottom:15%"></div>
 		
 		<!-- Blocs centraux -->
 		<div id="liste_etape">
