@@ -176,9 +176,10 @@ label {
   z-index: 10;
   }
   
-p.popup {
+p.myPopupIndice {
   color:back;
 }
+
 .popup-content {
   text-align: center;
 }
