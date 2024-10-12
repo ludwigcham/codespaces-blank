@@ -4,29 +4,33 @@
 		<meta charset="UTF-8">
 		<title>Super Mario Escape : La Quête des Étoiles disparues</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
-		<link rel="icon" type="image/x-icon" href="/assets/logo.png">
+		<link rel="icon" type="image/x-icon" href="/assets/favicon.png">
     <!-- Scripts de chargement de page -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/assets/script.js"></script>
     <script> 
       $(function(){
-        $("#compteur").load("/assets/tpt_compteurs.html"); 
+		/*Chargement des HTML externes*/
+        $("#compteur").load("/assets/tpt_compteurs.html");
+		$("#menu").load("/assets/tpt_menu.html");
+		/*Activation du formulaire ou des compteurs*/
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
-        console.log(etapes);
-        if (etapes[2]==1){//CHANGER LE NUMERO DE L'ETAPE POUR DESACTIVER LE FORMULAIRE
+        if (etapes[2]==1){
           document.getElementById("formulaire").style.display = "none";
+          document.getElementById("compteur").style.display = "block";
         }
       });
+	  /*Ce qui tourne toutes les secondes sur la page*/
       setInterval(() => {
-        var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
-        document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
-        document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
-        document.getElementById("stape").innerHTML = '1 / ' +  etapes.length;
+		var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+		if (etapes != undefined) {
+        	document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
+        	document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
+		}
       }, 1000)
     </script> 
 	</head>
 	<body onload="chargePage('p3263e')">
-
     <!-- Popup Indice-->
     <div style="display:none;" class="popup-overlay" id="popup" onclick="popupIndiceNone()">
       <div class="popup" id="popup">
@@ -37,19 +41,22 @@
       </div>
     </div>
 
-		<!-- Haut de la page -->
-		<a href="menu.html"><img class="logo" src="/assets/logo.png"></a>
-		
-		<!-- Blocs centraux -->
-		<div id="liste_etape">
-		
-			<!-- 1 - Compteurs -->
+		<!-- Haut de page -->
+		<div id="haut_page">
+			<!-- Boite menu + Logo -->
+			<div id="menu"></div>
+			<!-- Compteurs -->
 			<div id="compteur"></div>
-		
+		</div>
+
+		<!-- Centre de page -->
+		<div id="centre_page">
+			<!-- 1 - Indices -inactif dans cette page -->
+			<div id="indices" class="carte activ" style="display:none;"></div>
 			<!-- 2 - Epreuve/Texte -->
 			<div id="texte" class="carte activ">
-			  <div class="container">
-          <h2><b>Bienvenue dans la 1ère mission !</b></h2>
+				<div class="container">
+					<h2><b>Bienvenue dans la 1ère mission !</b></h2>
           <p>Dans ton appartement, j'ai installé un système de communication spaciotempreComme tu as pu le voir avec ce flash NFC, j'ai mis en place dans ton appartement une solution nouvelle génération de commuication inter faille spacio-temporelle.
             <br><br>Le système est connecté à des capteurs qui vont nous aider à nous connecter au monde de Mario. Ils analysent aussi en temps réel les émissions pour détécter le moindre appareil suspect dans notre environnement.
             <br><br>Pour activer la communication, tu dois saisir un code à 4 chiffres que tu devras localiser dans ton appartement grace au rébu suivant : 
@@ -72,7 +79,6 @@
           <img id="i7" style="width:13%;" src="https://cdn.icon-icons.com/icons2/37/PNG/512/r_3467.png">
 				</div>
 			</div>
-
       <!-- 3 - Indices -->
 			<div id="indices" class="carte activ">
         <div class="container">
@@ -86,19 +92,19 @@
           </div>
 			  </div>
       </div>
-		
-			<!-- 4 - Formulaire de resultat/Boutons -->
-			<div id="formulaire" class="carte activ">
-				<div class="container">
-				  <!-- Initialisation du jeu / Retour au menu (avec popup)-->
-          <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(1,300);" class="outer">
-					  <div>
-              <label for="code"><b>Code à 4 chiffres :</b></label>
-              <input class="result_case" type="number" pattern="[0-9]*" min="0" max="9999" id="code" name="code" />
-            </div>
-            <div class="buttons"><input class="button_slide" type="submit" value="Valider" name="Valider" /></div>
-				  </form>
-			  </div>
+		</div>
+
+		<!-- Pied de page - Formulaire de resultat/Boutons -->
+		<div id="formulaire" class="">
+			<div class="container">
+        <!-- Initialisation du jeu / Retour au menu (avec popup)-->
+        <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(1,300);" class="outer">
+          <div>
+            <label for="code"><b>Code à 4 chiffres :</b></label>
+            <input class="result_case" type="number" pattern="[0-9]*" min="0" max="9999" id="code" name="code" />
+          </div>
+          <div class="buttons"><input class="button_slide" type="submit" value="Valider" name="Valider" /></div>
+        </form>
       </div>
 		</div>
 	</body>

@@ -16,6 +16,7 @@ h1{
 h2{
   font-family: system-ui;
   font-size: 2.5em;
+  color:white;
 }
 
 h3{
@@ -46,9 +47,9 @@ label {
 
 #centre_page {
   position: absolute;
-  top: 15%;
+  top: 17%;
   width: 95%;
-  height: 1000px;
+  height: 1050px;
   overflow: scroll;
 }
 
