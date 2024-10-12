@@ -1,6 +1,6 @@
 /*BALISES*/
 body{
-  padding: 15px;
+  padding: 0px 15px;
   background-image: url('/assets/background.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -35,9 +35,28 @@ label {
 
 /*CLASSES*/
 .logo {
-	width: 100%;
+	display:inline;
+  margin-left:15%;
+  width:70%;
 }
 
+.score {
+  width:5%;
+  margin-left: 35%;
+}
+
+.w10 {
+  width:12%;
+}
+
+.inlin {
+  display:inline;
+}
+
+.horloge {
+  margin-left:10%;
+  width:5%;
+}
 /*  Carte et bouttons*/
 .carte {
   margin-top: 10px;
