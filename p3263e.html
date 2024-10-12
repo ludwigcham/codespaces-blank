@@ -65,10 +65,6 @@
 			<div id="texte" class="carte activ">
 				<div class="container">
 					<h2><b>Bienvenue dans la 1ère mission !</b></h2>
-          <p>Dans ton appartement, j'ai installé un système de communication spaciotempreComme tu as pu le voir avec ce flash NFC, j'ai mis en place dans ton appartement une solution nouvelle génération de commuication inter faille spacio-temporelle.
-            <br><br>Le système est connecté à des capteurs qui vont nous aider à nous connecter au monde de Mario. Ils analysent aussi en temps réel les émissions pour détécter le moindre appareil suspect dans notre environnement.
-            <br><br>Pour activer la communication, tu dois saisir un code à 4 chiffres que tu devras localiser dans ton appartement grace au rébu suivant : 
-          
           <p>Dans ton appartement, j’ai installé un système de communication spatio-temporelle dernier cri, spécialement conçu 
             pour nous connecter au Royaume Champignon. Ce système est relié à des capteurs de pointe, capables de détecter et 
             d’analyser en temps réel les ondes et appareils suspects dans l’environnement. Tu vas en avoir besoin pour 
@@ -94,11 +90,8 @@
 			<div class="container">
         <!-- Initialisation du jeu / Retour au menu (avec popup)-->
         <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(1,300);" class="outer">
-          <div>
-            <label for="code"><b>Code à 4 chiffres :</b></label>
-            <input class="result_case" type="number" pattern="[0-9]*" min="0" max="9999" id="code" name="code" />
-          </div>
-          <div class="buttons"><input class="button_slide" type="submit" value="Valider" name="Valider" /></div>
+          <input class="result_case" type="number" pattern="[0-9]*" min="0" max="9999" id="code" name="code">
+          <input class="button_slide" type="submit" value="✔" name="Valider">
         </form>
       </div>
 		</div>
