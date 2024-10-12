@@ -176,7 +176,15 @@ label {
   z-index: 10;
   }
   
-p#myPopupIndice p#myPopupscore p#myPopup{
+p#myPopupIndice{
+  color:back;
+}
+
+p#myPopupscore{
+  color:back;
+}
+
+p#myPopup{
   color:back;
 }
 
