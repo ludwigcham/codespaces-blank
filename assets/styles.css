@@ -33,6 +33,12 @@ label {
   font-size: 2.5em;
 }
 
+#formulaire {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+}
+
 /*CLASSES*/
 .logo {
 	display:inline;
