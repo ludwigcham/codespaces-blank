@@ -48,6 +48,8 @@ label {
   position: absolute;
   top: 15%;
   width: 95%;
+  height: 1000px;
+  overflow: scroll;
 }
 
 /*CLASSES*/
