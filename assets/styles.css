@@ -176,7 +176,7 @@ label {
   z-index: 10;
   }
   
-p.myPopupIndice {
+p#myPopupIndice p#myPopupscore p#myPopup{
   color:back;
 }
 
