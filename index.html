@@ -4,23 +4,26 @@
 		<meta charset="UTF-8">
 		<title>Super Mario Escape : La Quête des Étoiles disparues</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
-		<link rel="icon" type="image/x-icon" href="/assets/menu.png">
+		<link rel="icon" type="image/x-icon" href="/assets/favicon.png">
     <!-- Scripts de chargement de page -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/assets/script.js"></script>
     <script> 
       $(function(){
+		/*Chargement des HTML externes*/
         $("#compteur").load("/assets/tpt_compteurs.html");
 		$("#menu").load("/assets/tpt_menu.html");
+		/*Activation du formulaire ou des compteurs*/
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
-        console.log(etapes);
         if (etapes[1]==1){
           document.getElementById("formulaire").style.display = "none";
-          document.getElementById("compteur").style.display = "block"; 
+          document.getElementById("compteur").style.display = "block";
+		  /* A conserver ou faire autrement ?*/
 		  document.getElementById("menu").style.marginBottom = "0%"; 
 		  document.getElementById("compteur").style.marginBottom = "15%";
         }
       });
+	  /*Ce qui tourne toutes les secondes sur la page*/
       setInterval(() => {
 		var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
         document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
@@ -30,36 +33,36 @@
     </script> 
 	</head>
 	<body>
-		<!-- Haut de la page -->
-		<div id="menu" style="margin-bottom:15%"></div>
-		
-		<!-- Blocs centraux -->
-		<div id="liste_etape">
-		
-			<!-- 1 - Compteurs -->
+		<!-- Haut de page -->
+		<div id="haut_page">
+			<!-- Boite menu + Logo -->
+			<div id="menu"></div>
+			<!-- Compteurs -->
 			<div id="compteur" style="display:none;"></div>
+		</div>
 
-			<!-- 1bis - Indices -->
+		<!-- Centre de page -->
+		<div id="centre_page">
+			<!-- 1 - Indices -inactif dans cette page -->
 			<div id="indices" class="carte activ" style="display:none;"></div>
-		
 			<!-- 2 - Epreuve/Texte -->
 			<div id="texte" class="carte activ">
 				<div class="container">
 					<p>Le royaume Champignon est en danger depuis que Bowser, toujours aussi rusé, a piégé Mario et ses amis dans une réalité étrange… ton appartement dans une faille spatio-temporelle ! 
 					<br><br>Il a dispersé des étoiles magiques que seuls les plus ingénieurs réussiront a trouver et qui permettront d'activer le portail retour pour toute l'équipe.
-          <br><br>Tu n'es pas seul puisque Luigi va t'aider à distance et viendra te rejoindre rapidement !
-          <br><br>Inutil de traîner, nous devons agir vite pour sortir l'équipe du plombier moustachu de ce piège !</p>
+          			<br><br>Tu n'es pas seul puisque Luigi va t'aider à distance et viendra te rejoindre rapidement !
+          			<br><br>Inutil de traîner, nous devons agir vite pour sortir l'équipe du plombier moustachu de ce piège !</p>
 				</div>
 			</div>
-		
-			<!-- 3 - Formulaire de resultat/Boutons -->
-			<div id="formulaire" class="carte activ">
-				<div class="container">
-				<!-- Initialisation du jeu / Retour au menu (avec popup)-->
-    				<form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(0,200);" class="outer">
-						<div class="buttons"><input class="button_slide" type="submit" value="C'est parti !" name="Lance le jeu !" /></div>
-				  	</form>
-				</div>
+		</div>
+
+		<!-- Pied de page - Formulaire de resultat/Boutons -->
+		<div id="formulaire" class="carte activ">
+			<div class="container">
+			<!-- Initialisation du jeu / Retour au menu (avec popup)-->
+    			<form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(0,200);" class="outer">
+					<div class="buttons"><input class="button_slide" type="submit" value="C'est parti !" name="Lance le jeu !" /></div>
+			  	</form>
 			</div>
 		</div>
 	</body>
