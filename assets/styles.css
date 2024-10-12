@@ -166,6 +166,8 @@ label {
   position: absolute;
   top: 50%;
   left: 50%;
+  min-width: 600px;
+  in-height: 300px;
   transform: translate(-50%, -50%);
   background: #fff;
   padding: 20px;
@@ -174,6 +176,9 @@ label {
   z-index: 10;
   }
   
+p.popup {
+  color:back;
+}
 .popup-content {
   text-align: center;
 }
