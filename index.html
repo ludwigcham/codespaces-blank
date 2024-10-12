@@ -18,17 +18,15 @@
         if (etapes[1]==1){
           document.getElementById("formulaire").style.display = "none";
           document.getElementById("compteur").style.display = "block";
-		  /* A conserver ou faire autrement ?*/
-		  document.getElementById("menu").style.marginBottom = "0%"; 
-		  document.getElementById("compteur").style.marginBottom = "15%";
         }
       });
 	  /*Ce qui tourne toutes les secondes sur la page*/
       setInterval(() => {
 		var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
-        document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
-        document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
-		document.getElementById("stape").innerHTML = '0 / ' +  etapes.length;
+		if (etapes != undefined) {
+        	document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
+        	document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
+		}
       }, 1000)
     </script> 
 	</head>
@@ -38,7 +36,7 @@
 			<!-- Boite menu + Logo -->
 			<div id="menu"></div>
 			<!-- Compteurs -->
-			<div id="compteur" style="display:none;"></div>
+			<div id="compteur"></div>
 		</div>
 
 		<!-- Centre de page -->
