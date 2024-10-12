@@ -144,6 +144,21 @@ label {
   transition: ease-out 0.4s;
 }
 
+.button_slide_first {
+  padding: 5px 5px;
+  margin-left: 10%;
+  border-radius: 50%;
+  display: inline-block;
+  font-family: system-ui;
+  font-size: 2em;
+  letter-spacing: 1px;
+  box-shadow: inset 400px 0 0 0 #5d94f9;
+  color: white;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
 /* Bouton indices */
 .button_indice {
   height: 100px;
@@ -200,7 +215,7 @@ label {
   }
   
 .pblack {
-  color:back;
+  color:black;
 }
 
 .popup-content {
