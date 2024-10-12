@@ -26,11 +26,16 @@ h3{
 p {
   font-family: system-ui;
   font-size: 2.5em;
+  color: white;
 }
 
 label {
   font-family: system-ui;
   font-size: 2.5em;
+}
+
+#compteur {
+  margin-top:15px;
 }
 
 #formulaire {
@@ -78,7 +83,6 @@ label {
 
 .activ {
   background-color: #5d94f9;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .inactiv {
@@ -107,7 +111,7 @@ label {
   font-family: system-ui;
   font-size: 2em;
   letter-spacing: 1px;
-  box-shadow: inset 400px 0 0 0 #005ca9;
+  box-shadow: inset 400px 0 0 0 #5d94f9;
   color: white;
   -webkit-transition: ease-out 0.4s;
   -moz-transition: ease-out 0.4s;
@@ -119,21 +123,21 @@ label {
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  border: 5px solid #005ca9;
+  border: 5px solid #5d94f9;
   font-size: 2em;
   text-align: center;
   margin-left:1%;
 }
 
 .button_indice_on {
-  background-color: #005ca9;
+  background-color: #5d94f9;
   color: white;
   font-weight: bold;
 }
 
 .result_case {
   color: black;
-  border: 5px solid #005ca9;
+  border: 5px solid #5d94f9;
   border-radius: 10px;
   padding: 5px 5px;
   display: inline-block;
