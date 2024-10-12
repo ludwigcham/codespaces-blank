@@ -39,6 +39,12 @@ label {
   width: 100%;
 }
 
+#centre_page {
+  position: absolute;
+  top: 15%;
+  width: 95%;
+}
+
 /*CLASSES*/
 .logo {
 	display:inline;
@@ -71,7 +77,7 @@ label {
 }
 
 .activ {
-  background-color: #fadab4;
+  background-color: #5d94f9;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
