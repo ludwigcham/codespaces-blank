@@ -238,7 +238,6 @@ label {
 
 /*MASTERMIND*/
 
-/* game board */
 table {border-collapse:collapse;}
 table td {border:solid 1px white; padding:4px; text-align:center;font-family: system-ui;font-size: 2.5em;color:white}
 table tr.selected td {background:#cdcdcd;}
@@ -246,16 +245,49 @@ table tr.selected td.selected {background:#e8dda5;}
 table tr td.valid {display:none;}
 table tr.selected td.valid {display:table-cell;}
 table tr.win td {background:#43b456;}
-
 .pion {display:inline-block; width:20px; height:20px; border-radius:10px; border:solid 1px #888;}
-
 .correct {display:inline-block; width:10px; height:10px; border-radius:5px; border:solid 1px #888; background:black;}
 .misplaced {display:inline-block; width:10px; height:10px; border-radius:5px; border:solid 1px #888;}
-
-/* menu */
 .menus .menu {padding:10px 25px; margin:8px; background:#4366b4; color:white; cursor:pointer; width:200px;}
-
 .game {margin: auto;width: 50%;margin-left: 25%;padding: 10px;}
+
+/*PUZZLE*/
+:root {--color: hsl(40, 30%, 80%);}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 5px;
+  width: 500px;
+}
+
+.wrapper div {
+  background-color: #0d0d0d;
+  aspect-ratio: 1;
+  font-family: "Roboto Mono", monospace;
+  font-size: 120px;
+  color: var(--color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 2%;
+}
+
+.emptyblock {
+  background-color: var(--color) !important;
+}
+
+.footer {
+  text-align: center;
+  grid-column: 1 / span 3;
+  font-size: 1em;
+}
+
+a {
+  color: #0d0d0d;
+}
 
 
 
