@@ -16,7 +16,7 @@
 		/*Activation du formulaire ou des compteurs*/
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
         if (etapes[6]==1){
-          document.getElementById("formulaire").style.display = "none";          
+          document.getElementById("formulaire").style.display = "none";
           document.getElementById("formulaire_resultat").style.display = "block";
           document.getElementById("compteur").style.display = "block";
         }
@@ -33,8 +33,8 @@
 	</head>
 	<body onload="chargePage('m6182p')">
     <!-- Popup Validation Etape-->
-    <div style="display:none;" class="popup-overlay" id="popup" onclick="popupNone()">
-      <div class="popup" id="popup">
+    <div style="display:none;" class="popup-overlay" id="popupValidation" onclick="popupNone()">
+      <div class="popup" id="popupValidation">
         <span class="close" id="closePopup">&times;</span>
         <div class="popup-content">
           <p class="pblack" id="myPopup">texte</p>

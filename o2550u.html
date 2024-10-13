@@ -17,6 +17,7 @@
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
         if (etapes[8]==1){
           document.getElementById("formulaire").style.display = "none";
+          document.getElementById("formulaire_resultat").style.display = "block";
           document.getElementById("compteur").style.display = "block";
         }
       });
@@ -31,6 +32,18 @@
     </script> 
 	</head>
 	<body onload="chargePage('o2550u')">
+    <!-- Popup Validation Etape-->
+    <div style="display:none;" class="popup-overlay" id="popupValidation" onclick="popupNone()">
+      <div class="popup" id="popupValidation">
+        <span class="close" id="closePopup">&times;</span>
+        <div class="popup-content">
+          <p class="pblack" id="myPopup">texte</p>
+          <h1 style="display:inline;" class="pblack" id="myPopupscore">score</h1>
+          <img style="display:inline;width:5%;margin-left:2%" src="/assets/mario-coins.gif">
+        </div>
+      </div>
+    </div>
+
     <!-- Popup Indice-->
     <div style="display:none;" class="popup-overlay" id="popup" onclick="popupIndiceNone()">
       <div class="popup" id="popup">
@@ -79,12 +92,20 @@
 		<div id="formulaire" class="">
 			<div class="container">
         <!-- Initialisation du jeu / Retour au menu (avec popup)-->
-        <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(7,150);" class="outer">
+        <form action="w9743q.html" name="RegForm" type="GET" onsubmit="return valid(7,150);" class="outer">
           <select class="result_case" name="code" id="code">
             <option value="Bleu">Bleu</option>
             <option value="Marron">Marron</option>
           </select>
           <input class="button_slide" type="submit" value="✔" name="Valider">
+        </form>
+      </div>
+		</div>
+    <div id="formulaire_resultat" style="display:none;">
+			<div class="container">
+        <!-- Initialisation du jeu / Retour au menu (avec popup)-->
+        <form action="w9743q.html" name="RegForm" type="GET" onsubmit="" class="outer">
+          <input class="result_case" type="text" value="Bleu">
         </form>
       </div>
 		</div>
