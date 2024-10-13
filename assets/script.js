@@ -32,11 +32,16 @@ function initGame() {
 	indicesTexte[4] = Array(2);
 	indicesTexte[4][0] = "Le nom de cette fleur devrait t'aider !";
   indicesTexte[4][1] = "C'est le seul endroit de ton appartement où il est normal d'en trouver !";
-    //Etape 5 =>  2 indice
-	indicesActivated[4] = Array(2).fill(0);
-	indicesTexte[4] = Array(2);
-	indicesTexte[4][0] = "Le nom de cette fleur devrait t'aider !";
-  indicesTexte[4][1] = "C'est le seul endroit de ton appartement où il est normal d'en trouver !";
+    //Etape 6 =>  2 indice
+	indicesActivated[6] = Array(2).fill(0);
+	indicesTexte[6] = Array(2);
+	indicesTexte[6][0] = "Harry Potter";
+  indicesTexte[6][1] = "Où est la chambre d'Harry potter ?";
+    //Etape 7 =>  2 indice
+	indicesActivated[7] = Array(2).fill(0);
+	indicesTexte[7] = Array(2);
+	indicesTexte[7][0] = "Qu'as-tu déjà trouvé ?";
+  indicesTexte[7][1] = "La couleur de la boîte de thé découverte";
 		//Chargement des variables en stockage
 	localStorage.setItem("indicesActivated", JSON.stringify(indicesActivated)); 
 	localStorage.setItem("indicesTexte", JSON.stringify(indicesTexte)); 
@@ -79,6 +84,14 @@ function chargePage(numPage) {
 			//Chargement des indices :
 			MasterMind.initialise();
       ChargeIndices(5);
+			break;
+    case "f4190b" :
+			//Chargement des indices :
+      ChargeIndices(6);
+			break;
+    case "o2550u" :
+			//Chargement des indices :
+      ChargeIndices(7);
 			break;
 		default:
 			break;
@@ -210,6 +223,44 @@ function valid(etapevalidee, score) {
       vainqueur(etapevalidee, score);
       return true;
 			break;
+    // Si 5 : Code du MasterMind
+		case 5 :
+			var code = document.forms["RegForm"]["code"];
+			switch (code.value) {
+				case "":
+					alert("Remplir le code !");
+					code.focus();
+					return false;
+					break;
+				case "682134":
+					vainqueur(etapevalidee, score);
+					return true;
+					break;
+				default :
+					alert("Le code n'est pas bon !");
+					code.focus();
+					return false;
+					break;
+			}
+    // Si 6 : Il flash le QRcode
+		case 6 :
+      vainqueur(etapevalidee, score);
+      return true;
+			break;
+    // Si 7 : couleur
+		case 5 :
+			var code = document.forms["RegForm"]["code"];
+			switch (code.value) {
+				case "Bleu":
+					vainqueur(etapevalidee, score);
+					return true;
+					break;
+				default :
+					alert("Ce n'est pas la bonne couleur");
+					code.focus();
+					return false;
+					break;
+			}
     default :
       	break;
 	}
@@ -239,15 +290,19 @@ function vainqueur(etapevalidee, score) {
 			localStorage.setItem("popupTexte", "Top ! Tu viens d'activer le système ! Je reçois des premières infos.");
 			break;
     case 4:
-			localStorage.setItem("popupTexte", "Cette étoile te rapporte pas mal de coins");
+			localStorage.setItem("popupTexte", "Cette étoile te rapporte pas mal de coins !");
+			break;
+    case 5:
+			localStorage.setItem("popupTexte", "Bien joué ! La connexion est rétablie !");
+			break;
+    case 6:
+			localStorage.setItem("popupTexte", "Tu as trouvé la boîte ! Fais-y attention, c'est fragile et elle semble fortement piégée !");
+			break;
+    case 7:
+			localStorage.setItem("popupTexte", "Tu peux couper le fil bleu, c'était la bonne couleur !:");
 			break;
 	}
 }
-
-
-
-
-
 
 //MASTERMIND
 
@@ -359,12 +414,12 @@ var MasterMind = {
     defineSoluce: function() {
         this.game['soluce'] = new Array();
         /*Définition du code*/
-        this.game['soluce'][1] = 1;
-        this.game['soluce'][2] = 2;
-        this.game['soluce'][3] = 3;
-        this.game['soluce'][4] = 4;
-        this.game['soluce'][5] = 5;
-        this.game['soluce'][6] = 6;
+        this.game['soluce'][1] = 6;
+        this.game['soluce'][2] = 8;
+        this.game['soluce'][3] = 2;
+        this.game['soluce'][4] = 1;
+        this.game['soluce'][5] = 3;
+        this.game['soluce'][6] = 4;
         
     },
 
@@ -521,318 +576,6 @@ var MasterMind = {
         this.Initialise();
     },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-function testit(ref) {
-  switch(ref) {
-    case "rk73d5l":
-		var numero = document.forms["RegForm"]["Numero"];
-		if (numero.value == "") {
-			alert("Remplir le numéro");
-  			numero.focus();
-	  		return false;
-		}
-  		else if (numero.value != "33763428554") {
-	  		alert("Le numéro n'est pas bon");
-		  	numero.focus();
-			return false;
-  		}
-	  	else if (numero.value == "33763428554") {
-		  	localStorage.setItem("activity", JSON.stringify([0,1,1,0,0,0,0,0,0,0,0,0,0,0]));
-			addpts(10);
-  		}
-	  	return true;
-		break;
-    case "m4ds296":
-  		var numero = document.forms["RegForm"]["code"];
-	  	if (numero.value == "") {
-		  	alert("Remplir le code");
-			numero.focus();
-  			return false;
-	  	}
-		else if (numero.value != "ARGONNE" && numero.value != "argonne" && numero.value != "Argonne") {
-			alert("Le code n'est pas bon");
-  			numero.focus();
-	  		return false;
-		}
-	  	else if (numero.value == "ARGONNE" || numero.value == "argonne"  || numero.value == "Argonne") {
-			localStorage.setItem("activity", JSON.stringify([0,1,1,1,0,0,0,0,0,0,0,0,0,0]));
-			addpts(10);
-		}
-		return true;
-		break;
-    case "fr8246k":
-		localStorage.setItem("activity", JSON.stringify([0,1,1,1,1,0,0,0,0,0,0,0,0,0]));
-		addpts(20);
-		return true;
-		break;
-    case "mp703d5":
-		var numero = document.forms["RegForm"]["couleur"];
-        if (numero.value == "") {
-			alert("Remplir la couleur");
-			numero.focus();
-			return false;
-        }
-        if (numero.value != "Bleu") {
-			alert("Ce n'est pas la bonne couleur");
-			numero.focus();
-			return false;
-        }
-		if (numero.value == "Bleu") {
-			localStorage.setItem("activity", JSON.stringify([0,1,1,1,1,1,0,0,0,0,0,0,0,0]));
-			addpts(20);
-        }
-        return true;
-		break;
-	case "ks63b93":
-        var numero = document.forms["RegForm"]["code"];
-        if (numero.value == "") {
-			alert("Remplir le code");
-			numero.focus();
-			return false;
-        }
-        if (numero.value != "il est a moi" && numero.value != "IL EST A MOI" && numero.value != "Il est à moi") {
-			alert("Le code n'est pas bon");
-			numero.focus();
-			return false;
-        }
-		if (numero.value == "il est a moi" || numero.value == "IL EST A MOI" || numero.value == "Il est à moi") {
-			localStorage.setItem("activity", JSON.stringify([0,1,1,1,1,1,1,0,0,0,0,0,0,0]));
-			addpts(10);
-        }
-		return true;
-		break;
-	case "l4s05m3":
-		var numero = document.forms["RegForm"]["code"];
-        if (numero.value == "") {
-			alert("Remplir le code");
-			numero.focus();
-			return false;
-        }
-        if (numero.value != "1256") {
-			alert("Le code n'est pas bon");
-			numero.focus();
-			return false;
-        }
-		if (numero.value == "1256") {
-			localStorage.setItem("activity", JSON.stringify([0,1,1,1,1,1,1,1,0,0,0,0,0,0]));
-			addpts(10);
-        }
-        return true;
-		break;
-	case "bm410f4":
-        var numero = document.forms["RegForm"]["code"];
-        if (numero.value == "") {
-			alert("Remplir le code ! Indice : Positionne les objets précédement trouvés et trace des traits sur le plan");
-			numero.focus();
-			return false;
-        }
-        if (numero.value != "8325") {
-			alert("Le code n'est pas bon ! Indice : Positionne les objets précédement trouvés et trace des traits sur le plan");
-			numero.focus();
-			return false;
-        }
-		if (numero.value == "8325") {
-			localStorage.setItem("activity", JSON.stringify([0,1,1,1,1,1,1,1,1,0,0,0,0,0]));
-			addpts(10);
-        }
-        return true;
-		break;
-	case "92drt4":
-        var numero = document.forms["RegForm"]["code"];
-        if (numero.value == "") {
-			alert("Remplir le code !");
-			numero.focus();
-			return false;
-        }
-        if (numero.value != "4341") {
-			alert("Le code n'est pas bon !");
-			numero.focus();
-			return false;
-        }
-		if (numero.value == "4341") {
-          localStorage.setItem("activity", JSON.stringify([0,1,1,1,1,1,1,1,1,1,0,0,0,0]));
-		  addpts(20);
-        }
-        return true;
-		break;
-	case "234fcw6":
-        var numero = document.forms["RegForm"]["Numero"];
-        if (numero.value == "") {
-			alert("Remplir le mot");
-			numero.focus();
-			return false;
-        }
-        if (numero.value != "froid" && numero.value != "FROID" && numero.value != "Froid") {
-			alert("Le mot n'est pas bon");
-			numero.focus();
-			return false;
-        }
-		if (numero.value == "froid" || numero.value == "FROID" || numero.value == "Froid") {
-			localStorage.setItem("activity", JSON.stringify([0,1,1,1,1,1,1,1,1,1,1,0,0,0]));
-			addpts(10);
-        }
-        return true;
-		break;
-	case "9h5d35g":
-		var numero = document.forms["RegForm"]["Numero"];
-		var pin = document.forms["RegForm"]["pin"];
-        if (numero.value == "" || pin.value == "") {
-			alert("Remplir les éléments");
-			numero.focus();
-			return false;
-        }
-        if (numero.value != "CA73b") {
-			alert("La référence n'est pas la bonne");
-			numero.focus();
-			return false;
-        }
-		if (pin.value != "1234567890") {
-			alert("Le PIN n'est pas le bon");
-			numero.focus();
-			return false;
-        }
-		if (numero.value == "CA73b" && pin.value == "1234567890") {
-			localStorage.setItem("activity", JSON.stringify([0,1,1,1,1,1,1,1,1,1,1,1,0,0]));
-			addpts(20);
-        }
-        return true;
-		break;
-	case "9mf31sg":
-        var numero = document.forms["RegForm"]["code"];
-        if (numero.value == "") {
-			alert("Tu dois trouver quelques choses !");
-			numero.focus();
-			return false;
-        }
-        if (numero.value != "28/02") {
-			alert("Ce n'est pas la bonne info");
-			numero.focus();
-			return false;
-        }
-		if (numero.value == "28/02") {
-			localStorage.setItem("activity", JSON.stringify([0,1,1,1,1,1,1,1,1,1,1,1,1,0]));
-			addpts(10);
-        }
-        return true;
-		break;
-    case "kj74d8k":
-        var numero = document.forms["RegForm"]["code"];
-        if (numero.value == "") {
-			alert("Tu dois trouver quelques choses !");
-			numero.focus();
-			return false;
-        }
-        if (numero.value != "Grand théâtre" && numero.value != "GRAND THEATRE" && numero.value != "Grand theatre" && numero.value != "Grand Théâtre") {
-			alert("Ce n'est pas la bonne info");
-			numero.focus();
-			return false;
-        }
-		if (numero.value == "Grand théâtre" || numero.value == "GRAND THEATRE" || numero.value == "Grand theatre" || numero.value == "Grand Théâtre") {
-			localStorage.setItem("activity", JSON.stringify([0,1,1,1,1,1,1,1,1,1,1,1,1,1]));
-			addpts(10);
-        }
-        return true;
-		break;
-    default:
-      // code block
-  }
-}
-
-function addpts(num) {
-  localStorage.setItem("score", parseInt(localStorage.getItem("score"))+num);
-}
-
-function useindice(refetape, refindice) {
-  switch(refetape) {
-    case "fr8246k":
-	  localStorage.setItem("score", parseInt(localStorage.getItem("score"))-5);
-      if (refindice==1) {
-        document.getElementById('i1').style ="width:20%;display:inline;";
-        document.getElementById('indice1').style ="display:none;";
-      }
-      else if (refindice==2){
-        document.getElementById('i2').style ="width:20%;display:inline;";
-        document.getElementById('indice2').style ="display:none;";
-      }
-      else if (refindice==3){
-        document.getElementById('i3').style ="width:20%;display:inline;";
-        document.getElementById('indice3').style ="display:none;";
-      }
-      else if (refindice==4){
-        document.getElementById('i4').style ="width:20%;display:inline;";
-        document.getElementById('indice4').style ="display:none;"; 
-      }
-      break;
-    case "mp703d5":
-	  localStorage.setItem("score", parseInt(localStorage.getItem("score"))-5);
-      if (refindice==1) {
-        document.getElementById('i1').style ="width:20%;display:inline;";
-        document.getElementById('indice1').style ="display:none;";
-      }
-      else if (refindice==2){
-        document.getElementById('i2').style ="width:20%;display:inline;";
-        document.getElementById('indice2').style ="display:none;";
-      }
-      else if (refindice==3){
-        document.getElementById('i3').style ="width:20%;display:inline;";
-        document.getElementById('indice3').style ="display:none;";
-      }
-      else if (refindice==4){
-        document.getElementById('i4').style ="width:20%;display:inline;";
-        document.getElementById('indice4').style ="display:none;"; 
-      }
-      break;
-	case "9h5d35g":
-	  localStorage.setItem("score", parseInt(localStorage.getItem("score"))-10);
-      if (refindice==1) {
-        document.getElementById('i1').style ="width:20%;display:inline;";
-        document.getElementById('indice1').style ="display:none;";
-      }
-      break;
-    default:
-  }
-}
-
-function addCompteurs(){
-	document.getElementById("compteur")
-}
 
 function parseMillisecondsIntoReadableTime(milliseconds){
   var hours = milliseconds / (1000*60*60);
