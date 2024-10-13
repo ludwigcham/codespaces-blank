@@ -318,14 +318,6 @@ var MasterMind = {
                 line.appendChild(cell);
             }
 
-            for (j = 1; j <= this.settings['columns']; j++) {
-                cell = document.createElement('td');
-                cell.innerHTML = '';
-                cell.id = 'result-'+i+'-'+j;
-                cell.style.width = '16px';
-                line.appendChild(cell);
-            }
-
             cell = document.createElement('td');
             cell.innerHTML = 'OK';
             cell.id = 'valid-'+i;
@@ -485,16 +477,12 @@ var MasterMind = {
 
             /* Affiche les pions bien ou mal placés */
             for (i = 1; i <= this.settings['columns']; i++) {
-                pion = document.createElement('div');
                 //S'il est bien placé
                 if (tabres[i]==2) {
-                  pion.className = 'correct';
+                  document.getElementById('turn-'+this.game['turn']+'-'+i).style.backgroundColor = "black";
                 } else if (tabres[i]==1) {
-                  pion.className = 'misplaced';
-                } else {
-                  pion.innerHTML="&times;";
-                }
-                document.getElementById('result-'+this.game['turn']+'-'+i).appendChild(pion);
+                  document.getElementById('turn-'+this.game['turn']+'-'+i).style.backgroundColor = "white";
+                } 
             }
 
         /* Prepare le jeu pour le tour suivant */
