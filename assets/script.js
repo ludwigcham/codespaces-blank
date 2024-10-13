@@ -79,7 +79,7 @@ function chargePage(numPage) {
   if (localStorage.getItem("vainqueur") == 1) {
     document.getElementById("myPopup").innerHTML = localStorage.getItem("popupTexte");
     document.getElementById("myPopupscore").innerHTML = "+ " + localStorage.getItem("scoreEnCours")
-    document.getElementById("popup").style.display = 'block';
+    document.getElementById("popupValidation").style.display = 'block';
   }
 	switch(numPage) {
 		case "menu" :
@@ -205,7 +205,7 @@ function ChargeIndices(numPage) {
 
 //Menu : Désactiver le popup 
 function popupNone() {
-	document.getElementById("popup").style.display = "none";
+	document.getElementById("popupValidation").style.display = "none";
 	localStorage.setItem("scoreTotal", parseInt(localStorage.getItem("scoreEnCours"))+parseInt(localStorage.getItem("scoreTotal")));
 	localStorage.setItem("scoreEnCours",0)
 	localStorage.setItem("vainqueur",0)
