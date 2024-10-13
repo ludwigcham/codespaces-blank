@@ -234,7 +234,7 @@ function vainqueur(etapevalidee, score) {
 			localStorage.setItem("popupTexte", "Top ! Tu viens d'activer le système ! Je reçois des premières infos.");
 			break;
     case 4:
-			localStorage.setItem("popupTexte", "Cette étoile te rapporte pas mal de coins !");
+			localStorage.setItem("popupTexte", "Cette étoile te rapporte pas mal de coins");
 			break;
 	}
 }
@@ -481,14 +481,15 @@ var MasterMind = {
             /* Affiche les pions bien ou mal placés */
             for (i = 1; i <= this.settings['columns']; i++) {
                 pion = document.createElement('div');
-                var color = "";
                 //S'il est bien placé
                 if (tabres[i]==2) {
-                  color = "black";
+                  pion.className = 'correct';
                 } else if (tabres[i]==1) {
-                  color = "white";
+                  pion.className = 'misplaced';
+                } else {
+                  pion.innerHTML="&times;";
                 }
-                document.getElementById('turn-'+this.game['turn']+'-'+i).style.backgroundColor = color;
+                document.getElementById('result-'+this.game['turn']+'-'+i).appendChild(pion);
             }
 
         /* Prepare le jeu pour le tour suivant */
