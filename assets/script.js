@@ -90,9 +90,12 @@ function chargePage(numPage) {
                 etapecrs = localStorage.getItem("etapeEnCours");
                 //Pour que les inactive ne soient pas cliquable
                 for (var i = 1; i < array.length; i++) {
+                    console.log(i);
+                    console.log(document.getElementById("e"+i).innerHTML);
+                    console.log(document.getElementById("t"+i).innerHTML);
                     //Si elle n'est pas active
                     if (array[i]=="0") {
-                      document.getElementById("e"+i).classList.add("inactiv")
+                      document.getElementById("e"+i).classList.add("inactiv");
                     //Si elle est active
                     } else {
                       document.getElementById("e"+i).classList.add("activ");
@@ -102,7 +105,7 @@ function chargePage(numPage) {
                         document.getElementById("t"+i).innerHTML = "➡️" + valeur;
                       } else {
                         valeur = document.getElementById("t"+i).innerHTML;
-                        document.getElementById("t"+i).innerHTML = valeur + "✅";
+                        document.getElementById("t"+i).innerHTML = "✅" + valeur;
                       }
                     }
                   }
