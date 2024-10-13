@@ -1071,7 +1071,7 @@ function champi() {
     compt_champi++;
     if (compt_champi == 100) {
         valid(12,50);
-        window.location.href="./menu.html";
+        window.location.href="./c8568t.html";
     } else {
         localStorage.setItem("compt_champi", compt_champi);
     }

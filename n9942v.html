@@ -31,6 +31,18 @@
     </script> 
 	</head>
 	<body onload="chargePage('n9942v')">
+    <!-- Popup Validation Etape-->
+    <div style="display:none;" class="popup-overlay" id="popupValidation" onclick="popupNone()">
+      <div class="popup" id="popupValidation">
+        <span class="close" id="closePopup">&times;</span>
+        <div class="popup-content">
+          <p class="pblack" id="myPopup">texte</p>
+          <h1 style="display:inline;" class="pblack" id="myPopupscore">score</h1>
+          <img style="display:inline;width:5%;margin-left:2%" src="/assets/mario-coins.gif">
+        </div>
+      </div>
+    </div>
+
     <!-- Popup Indice-->
     <div style="display:none;" class="popup-overlay" id="popup" onclick="popupIndiceNone()">
       <div class="popup" id="popup">
