@@ -21,12 +21,17 @@ function initGame() {
 		//Etape 1 => 2 indices
 	indicesActivated[1] = Array(2).fill(0);
 	indicesTexte[1] = Array(2);
-	indicesTexte[1][0] = "Le calendrier de ce rébu change tous les jours !";
-	indicesTexte[1][1] = "C'est un MI !";
+	indicesTexte[1][0] = "Le calendrier de ce rébu change tous les jours en fonction de la date du jour !";
+	indicesTexte[1][1] = "La note de musique est un MI !";
 		//Etape 3 =>  1 indice
 	indicesActivated[3] = Array(1).fill(0);
 	indicesTexte[3] = Array(1);
 	indicesTexte[3][0] = "C'est une blague ?! Quel ingrédient utilises-tu dans ta soupe favorite ?";
+  	//Etape 4 =>  2 indice
+	indicesActivated[4] = Array(2).fill(0);
+	indicesTexte[4] = Array(2);
+	indicesTexte[4][0] = "Le nom de cette fleur devrait t'aider !";
+  indicesTexte[4][1] = "C'est le seul endroit de ton appartement où il est normal d'en trouver !";
 		//Chargement des variables en stockage
 	localStorage.setItem("indicesActivated", JSON.stringify(indicesActivated)); 
 	localStorage.setItem("indicesTexte", JSON.stringify(indicesTexte)); 
@@ -61,6 +66,10 @@ function chargePage(numPage) {
 			//Chargement des indices :
 			ChargeIndices(3);
 			break;
+    case "s1571a" :
+        //Chargement des indices :
+        ChargeIndices(4);
+        break;
 		case "m6182p" :
 			//Chargement des indices :
 			ChargeIndices(5);
@@ -137,7 +146,7 @@ function valid(etapevalidee, score) {
 					code.focus();
 					return false;
 					break;
-				case "1400":
+				case "1908":
 					vainqueur(etapevalidee, score);
 					return true;
 					break;
@@ -173,21 +182,31 @@ function valid(etapevalidee, score) {
 			var code = document.forms["RegForm"]["code"];
 			switch (code.value) {
 				case "":
-					alert("Remplir le numéro !");
+					alert("Remplir le code !");
 					code.focus();
 					return false;
 					break;
-				case "33763228554":
+				case "0716":
 					vainqueur(etapevalidee, score);
 					return true;
 					break;
+        case "716":
+            vainqueur(etapevalidee, score);
+            return true;
+            break;
 				default :
-					alert("Le numéro n'est pas bon !");
+					alert("Le code n'est pas bon !");
 					code.focus();
 					return false;
 					break;
 			}
+    // Si 4 : Il flash le QRcode
+		case 4 :
+      vainqueur(etapevalidee, score);
+      return true;
 			break;
+    default :
+      	break;
 	}
 }
 
@@ -210,6 +229,9 @@ function vainqueur(etapevalidee, score) {
 			break;
 		case 2:
 			localStorage.setItem("popupTexte", "Super ! Nous allons certainement pouvoir contacter Luigi prochainement !");
+			break;
+    case 3:
+			localStorage.setItem("popupTexte", "Top ! Tu viens d'activer le système ! Je reçois des premières infos.");
 			break;
 	}
 }

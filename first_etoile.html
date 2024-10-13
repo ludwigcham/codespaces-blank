@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Super Mario Escape : La Quête des Étoiles disparues</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <!-- Scripts de chargement de page -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/assets/script.js"></script>
+    <script> 
+      $(function(){
+		/*Il vient de scanner la 1ère etoile => */
+        $("#compteur").load("/assets/tpt_compteurs.html");
+		$("#menu").load("/assets/tpt_menu.html");
+		/*On ajoute 500 points et on le felicite*/
+        valid(4,500);
+		window.location.href="./menu.html";
+      });
+    </script> 
+	</head>
+	<body>
+	</body>
+</html>

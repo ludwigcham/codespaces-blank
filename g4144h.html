@@ -4,88 +4,86 @@
 		<meta charset="UTF-8">
 		<title>Super Mario Escape : La Quête des Étoiles disparues</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
-		<link rel="icon" type="image/x-icon" href="/assets/logo.png">
+		<link rel="icon" type="image/x-icon" href="/assets/favicon.png">
     <!-- Scripts de chargement de page -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/assets/script.js"></script>
     <script> 
       $(function(){
-        $("#compteur").load("/assets/tpt_compteurs.html"); 
+		/*Chargement des HTML externes*/
+        $("#compteur").load("/assets/tpt_compteurs.html");
+		$("#menu").load("/assets/tpt_menu.html");
+		/*Activation du formulaire ou des compteurs*/
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
-        console.log(etapes);
-        if (etapes[4]==1){//CHANGER LE NUMERO DE L'ETAPE POUR DESACTIVER LE FORMULAIRE
+        if (etapes[4]==1){
           document.getElementById("formulaire").style.display = "none";
+          document.getElementById("compteur").style.display = "block";
         }
       });
+	  /*Ce qui tourne toutes les secondes sur la page*/
       setInterval(() => {
-        var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
-        document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
-        document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
-        document.getElementById("stape").innerHTML = '3 / ' +  etapes.length;
+		var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+		if (etapes != undefined) {
+        	document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
+        	document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
+		}
       }, 1000)
     </script> 
 	</head>
 	<body onload="chargePage('g4144h')">
-
     <!-- Popup Indice-->
     <div style="display:none;" class="popup-overlay" id="popup" onclick="popupIndiceNone()">
       <div class="popup" id="popup">
         <span class="close" id="closePopup">&times;</span>
         <div class="popup-content">
-          <p id="myPopupIndice"></p>
+          <p class="pblack" id="myPopupIndice"></p>
         </div>
       </div>
     </div>
 
-		<!-- Haut de la page -->
-		<a href="menu.html"><img class="logo" src="/assets/logo.png"></a>
-		
-		<!-- Blocs centraux -->
-		<div id="liste_etape">
-		
-			<!-- 1 - Compteurs -->
+		<!-- Haut de page -->
+		<div id="haut_page">
+			<!-- Boite menu + Logo -->
+			<div id="menu"></div>
+			<!-- Compteurs -->
 			<div id="compteur"></div>
-		
-			<!-- 2 - Epreuve/Texte -->
-			<div id="texte" class="carte activ">
-				<div class="container">
-          <h2><b>Trouve l'ingrédient</b></h2>
-          <p>Oh mince ! J'ai oublié de noter le code que j'ai pourtant choisi lors de l'achat dy système.
-            Le vendeur me parlait de sa soupe favorite, une recette héritée de génération en génération.
-            <br><br>Il y ajoute un ingrédient qui rend tout plus doux et bon !
-            <br><br>Qu'est-ce qui peut fond comme certains obstacles et transformer une simple soupe en quelques choses d'inoubliables ?
-            <br><b>Envoi l'ingrédient par SMS pour lancer un premier scan !</b>
-            <br><b>Donne moi le code retour, j'en ai besoin pour activer mon écoute passive :</b>
-          <p>				
-				</div>
-			</div>
+		</div>
 
-      <!-- 3 - Indices -->
+		<!-- Centre de page -->
+		<div id="centre_page">
+			<!-- 1 - Indices -inactif dans cette page -->
 			<div id="indices" class="carte activ">
         <div class="container">
-				  <h2 style="display:inline;">Indice(s) </h2>
-          <h3 style="display:inline;"> (-100 </h3>
-				  <img style="width:5%;display:inline;" src="/assets/mario-coins.gif"/>
-				  <h3 style="display:inline;"> ) : </h3>
+				  <h2 style="display:inline;">Indice(s) : </h2>
           <div id="indicesBox" style="display:inline;">
             <div id="indicesBoxButton" style="display:inline;" class="buttons">           
             </div>
           </div>
 			  </div>
       </div>
-					
-      <!-- 4 - Formulaire de resultat/Boutons -->
-			<div id="formulaire" class="carte activ">
+			<!-- 2 - Epreuve/Texte -->
+			<div id="texte" class="carte activ">
 				<div class="container">
-				  <!-- Initialisation du jeu / Retour au menu (avec popup)-->
-          <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(3,250);" class="outer">
-					  <div>
-              <label for="code"><b>Code à 4 chiffres :</b></label>
-              <input class="result_case" type="number" pattern="[0-9]*" min="0" max="9999" id="code" name="code" />
-            </div>
-            <div class="buttons"><input class="button_slide" type="submit" value="Valider" name="Valider" /></div>
-				  </form>
-			  </div>
+					<h2><b>Bienvenue dans la 1ère mission !</b></h2>
+          <p>Oh mince ! J'ai oublié de noter le code que j'ai pourtant choisi lors de l'achat dy système.
+            Le vendeur me parlait de sa soupe favorite, une recette héritée de génération en génération.
+            <br><br>Il y ajoute un ingrédient qui rend tout plus doux et bon !
+            <br><br>Qu'est-ce qui peut fond comme certains obstacles et transformer une simple soupe en quelques choses d'inoubliables ?
+            <br><b>Envoi l'ingrédient par SMS pour lancer un premier scan !</b>
+            <br><b>Donne moi le code retour, j'en ai besoin pour activer mon écoute passive :</b>
+          <p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Pied de page - Formulaire de resultat/Boutons -->
+		<div id="formulaire" class="">
+			<div class="container">
+        <!-- Initialisation du jeu / Retour au menu (avec popup)-->
+        <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(3,250);" class="outer">
+          <input class="result_case" type="number" pattern="[0-9]*" min="0" max="9999" id="code" name="code">
+          <input class="button_slide" type="submit" value="✔" name="Valider">
+        </form>
       </div>
 		</div>
 	</body>
