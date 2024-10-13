@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Escape Argonne</title>
-    <link rel="stylesheet" href="/assets/styles.css" />
-    <link rel="icon" type="image/x-icon" href="/assets/logo.png">
+	<head>
+		<meta charset="UTF-8">
+		<title>Super Mario Escape : La Quête des Étoiles disparues</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <!-- Scripts de chargement de page -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/assets/script.js"></script>
-  </head>
-  <body onload="chargePage('menu')">
-			  
-		<!-- Popup -->
+    <script> 
+      $(function(){
+		/*Chargement des HTML externes*/
+    $("#compteur").load("/assets/tpt_compteurs.html");
+		$("#menu").load("/assets/tpt_menu.html");
+		/*Activation du formulaire ou des compteurs*/
+        var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+        if (etapes[1]==1){
+          document.getElementById("compteur").style.display = "block";
+        }
+      });
+	  /*Ce qui tourne toutes les secondes sur la page*/
+      setInterval(() => {
+		var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+		if (etapes != undefined) {
+        	document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
+        	document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
+		}
+      }, 1000)
+    </script> 
+	</head>
+	<body onload="chargePage('menu')">
+    <!-- Popup -->
     <div style="display:none;" class="popup-overlay" id="popup" onclick="popupNone()">
       <div class="popup" id="popup">
         <span class="close" id="closePopup">&times;</span>
@@ -20,13 +41,28 @@
         </div>
       </div>
     </div>
-		
-		<!-- Haut de la page -->
-		<a href="menu.html"><img class="logo" src="/assets/logo.png"></a>
 
-    <!-- Menu : liste des étapes -->
-    <div id="liste_etape">
-    
+		<!-- Haut de page -->
+		<div id="haut_page">
+			<!-- Boite menu + Logo -->
+			<div id="menu"></div>
+			<!-- Compteurs -->
+			<div id="compteur"></div>
+		</div>
+
+		<!-- Centre de page -->
+		<div id="centre_page">
+			<!-- 1 - Indices -inactif dans cette page -->
+			<div id="indices" class="carte activ">
+        <div class="container">
+				  <h2 style="display:inline;">Indice(s) : </h2>
+          <div id="indicesBox" style="display:inline;">
+            <div id="indicesBoxButton" style="display:inline;" class="buttons">           
+            </div>
+          </div>
+			  </div>
+      </div>
+			
       <!-- Introduction : index.html -->
       <div class="carte" id="e0" onclick="location.href='index.html';">
         <div class="container">
@@ -89,6 +125,6 @@
           <h2><b>Copyrigth</b></h2>
         </div>
       </div>
-    </div>
-  </body>
+		</div>
+	</body>
 </html>
