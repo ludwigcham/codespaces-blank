@@ -109,7 +109,7 @@ function chargePage(numPage) {
 		    break;
         case "z7946f" :
 		    //Chargement des indices :
-            game_init();
+            puzzle.game_init();
             ChargeIndices(10);
 		    break;
 	    default:
@@ -701,123 +701,123 @@ var puzzle = {
     //Move block
     moveBlock: function(block) {
         if (block == 0) {
-            if (blockOrder[1] == 0) {
+            if (this.blockOrder[1] == 0) {
               this.swap(0, 1);
               return;
             }
-            if (blockOrder[3] == 0) {
+            if (this.blockOrder[3] == 0) {
               this.swap(0, 3);
               return;
             }
           }
         
           if (block == 1) {
-            if (blockOrder[0] == 0) {
+            if (this.blockOrder[0] == 0) {
               this.swap(1, 0);
               return;
             }
-            if (blockOrder[4] == 0) {
+            if (this.blockOrder[4] == 0) {
               this.swap(1, 4);
               return;
             }
-            if (blockOrder[2] == 0) {
+            if (this.blockOrder[2] == 0) {
               this.swap(1, 2);
               return;
             }
           }
         
           if (block == 2) {
-            if (blockOrder[1] == 0) {
+            if (this.blockOrder[1] == 0) {
               this.swap(2, 1);
               return;
             }
-            if (blockOrder[5] == 0) {
+            if (this.blockOrder[5] == 0) {
               this.swap(2, 5);
               return;
             }
           }
         
           if (block == 3) {
-            if (blockOrder[0] == 0) {
+            if (this.blockOrder[0] == 0) {
               this.swap(3, 0);
               return;
             }
-            if (blockOrder[4] == 0) {
+            if (this.blockOrder[4] == 0) {
               this.swap(3, 4);
               return;
             }
-            if (blockOrder[6] == 0) {
+            if (this.blockOrder[6] == 0) {
               this.swap(3, 6);
               return;
             }
           }
         
           if (block == 4) {
-            if (blockOrder[1] == 0) {
+            if (this.blockOrder[1] == 0) {
               this.swap(4, 1);
               return;
             }
-            if (blockOrder[3] == 0) {
+            if (this.blockOrder[3] == 0) {
               this.swap(4, 3);
               return;
             }
-            if (blockOrder[5] == 0) {
+            if (this.blockOrder[5] == 0) {
               this.swap(4, 5);
               return;
             }
-            if (blockOrder[7] == 0) {
+            if (this.blockOrder[7] == 0) {
               this.swap(4, 7);
               return;
             }
           }
         
           if (block == 5) {
-            if (blockOrder[2] == 0) {
+            if (this.blockOrder[2] == 0) {
               this.swap(5, 2);
               return;
             }
-            if (blockOrder[4] == 0) {
+            if (this.blockOrder[4] == 0) {
               this.swap(5, 4);
               return;
             }
-            if (blockOrder[8] == 0) {
+            if (this.blockOrder[8] == 0) {
               this.swap(5, 8);
               return;
             }
           }
         
           if (block == 6) {
-            if (blockOrder[3] == 0) {
+            if (this.blockOrder[3] == 0) {
               this.swap(6, 3);
               return;
             }
-            if (blockOrder[7] == 0) {
+            if (this.blockOrder[7] == 0) {
               this.swap(6, 7);
               return;
             }
           }
         
           if (block == 7) {
-            if (blockOrder[6] == 0) {
+            if (this.blockOrder[6] == 0) {
               this.swap(7, 6);
               return;
             }
-            if (blockOrder[4] == 0) {
+            if (this.blockOrder[4] == 0) {
               this.swap(7, 4);
               return;
             }
-            if (blockOrder[8] == 0) {
+            if (this.blockOrder[8] == 0) {
               this.swap(7, 8);
               return;
             }
           }
         
           if (block == 8) {
-            if (blockOrder[5] == 0) {
+            if (this.blockOrder[5] == 0) {
               this.swap(8, 5);
               return;
             }
-            if (blockOrder[7] == 0) {
+            if (this.blockOrder[7] == 0) {
               this.swap(8, 7);
               return;
             }
@@ -827,7 +827,7 @@ var puzzle = {
     //Swap
     swap: function(s1, s2) {
         let temp = this.blockOrder[s1];
-        this.blockOrder[s1] = blockOrder[s2];
+        this.blockOrder[s1] = this.blockOrder[s2];
         this.blockOrder[s2] = temp;
         this.write();
     },
