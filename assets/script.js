@@ -869,9 +869,11 @@ var puzzle = {
 function champi() {
     console.log("champi()");
     compt_champi = localStorage.getItem("compt_champi");
+    console.log(compt_champi);
     compt_champi++;
     if (compt_champi == 10) {
-        valid(12,50)
+        valid(12,50);
+        window.location.href="./menu.html";
     } else {
         localStorage.setItem("compt_champi", compt_champi);
     }
