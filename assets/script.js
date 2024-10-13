@@ -313,6 +313,14 @@ var MasterMind = {
                 line.appendChild(cell);
             }
 
+            for (j = 1; j <= this.settings['columns']; j++) {
+                cell = document.createElement('td');
+                cell.innerHTML = '';
+                cell.id = 'result-'+i+'-'+j;
+                cell.style.width = '16px';
+                line.appendChild(cell);
+            }
+
             cell = document.createElement('td');
             cell.innerHTML = 'OK';
             cell.id = 'valid-'+i;
