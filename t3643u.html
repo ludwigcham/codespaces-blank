@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Super Mario Escape : La Quête des Étoiles disparues</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <!-- Scripts de chargement de page -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/assets/script.js"></script>
+    <script> 
+      $(function(){
+		/*Chargement des HTML externes*/
+        $("#compteur").load("/assets/tpt_compteurs.html");
+		$("#menu").load("/assets/tpt_menu.html");
+		/*Activation du formulaire ou des compteurs*/
+        var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+        if (etapes[10]==1){
+          document.getElementById("formulaire").style.display = "none";
+          document.getElementById("compteur").style.display = "block";
+        }
+      });
+	  /*Ce qui tourne toutes les secondes sur la page*/
+      setInterval(() => {
+		var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+		if (etapes != undefined) {
+        	document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
+        	document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
+		}
+      }, 1000)
+    </script> 
+	</head>
+	<body onload="chargePage('t3643u')">
+    <!-- Popup Indice-->
+    <div style="display:none;" class="popup-overlay" id="popup" onclick="popupIndiceNone()">
+      <div class="popup" id="popup">
+        <span class="close" id="closePopup">&times;</span>
+        <div class="popup-content">
+          <p class="pblack" id="myPopupIndice"></p>
+        </div>
+      </div>
+    </div>
+
+		<!-- Haut de page -->
+		<div id="haut_page">
+			<!-- Boite menu + Logo -->
+			<div id="menu"></div>
+			<!-- Compteurs -->
+			<div id="compteur"></div>
+		</div>
+
+		<!-- Centre de page -->
+		<div id="centre_page">
+			<!-- 1 - Indices -inactif dans cette page -->
+			<div id="indices" class="carte activ">
+        <div class="container">
+				  <h2 style="display:inline;">Indice(s) : </h2>
+          <div id="indicesBox" style="display:inline;">
+            <div id="indicesBoxButton" style="display:inline;" class="buttons">           
+            </div>
+          </div>
+			  </div>
+      </div>
+			<!-- 2 - Epreuve/Texte -->
+			<div id="texte" class="carte activ">
+				<div class="container">
+          <h2><b>Lancement de la phase de retour</b></h2>
+          <p>Comme tu l'auras certainement compris, l'objectif est de renvoyé l'équipe de mario dans son monde puisqu'ils semblent bloqués ici.
+            <br> Pour cela, nous allons devoir utiliser 1 étoile par équipier. Tu en as déjà 2 et nous allons ainsi pouvoir faire rentrer Mario et Luigi.
+            <br>Malheureusement, s'il on souhaite qu'ils rentrent tous, nous allons devoir en trouver d'autres.
+            <br>Pour activer la recherche avancé sur notre système, nous allons devoir entrer un code à 4 chiffres.
+            <br>Le plan de ton appartement devrait t'aider à le trouver. 
+          <p>	
+				</div>
+      </div>
+		</div>
+
+		<!-- Pied de page - Formulaire de resultat/Boutons -->
+		<div id="formulaire" class="">
+			<div class="container">
+        <!-- Initialisation du jeu / Retour au menu (avec popup)-->
+        <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(10,150);" class="outer">
+          <input class="result_case" type="number" pattern="[0-9]*" min="0" max="9999" id="code" name="code">
+          <input class="button_slide" type="submit" value="✔" name="Valider">
+        </form>
+      </div>
+		</div>
+	</body>
+</html>

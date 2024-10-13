@@ -27,21 +27,27 @@ function initGame() {
 	indicesActivated[3] = Array(1).fill(0);
 	indicesTexte[3] = Array(1);
 	indicesTexte[3][0] = "C'est une blague ?! Quel ingrédient utilises-tu dans ta soupe favorite ?";
-  	//Etape 4 =>  2 indice
+  	    //Etape 4 =>  2 indice
 	indicesActivated[4] = Array(2).fill(0);
 	indicesTexte[4] = Array(2);
 	indicesTexte[4][0] = "Le nom de cette fleur devrait t'aider !";
-  indicesTexte[4][1] = "C'est le seul endroit de ton appartement où il est normal d'en trouver !";
-    //Etape 6 =>  2 indice
+    indicesTexte[4][1] = "C'est le seul endroit de ton appartement où il est normal d'en trouver !";
+        //Etape 6 =>  2 indice
 	indicesActivated[6] = Array(2).fill(0);
 	indicesTexte[6] = Array(2);
 	indicesTexte[6][0] = "Harry Potter";
-  indicesTexte[6][1] = "Où est la chambre d'Harry potter ?";
-    //Etape 7 =>  2 indice
+    indicesTexte[6][1] = "Où est la chambre d'Harry potter ?";
+        //Etape 7 =>  2 indice
 	indicesActivated[7] = Array(2).fill(0);
 	indicesTexte[7] = Array(2);
 	indicesTexte[7][0] = "Qu'as-tu déjà trouvé ?";
-  indicesTexte[7][1] = "La couleur de la boîte de thé découverte";
+    indicesTexte[7][1] = "La couleur de la boîte de thé découverte";
+        //Etape 9 =>  3 indice
+	indicesActivated[9] = Array(3).fill(0);
+	indicesTexte[9] = Array(3);
+	indicesTexte[9][0] = "Tu as déjà trouvé des objets chez toi ?";
+    indicesTexte[9][1] = "Positionne les objets trouvés et trace 2 traits";
+    indicesTexte[9][2] = "Le code se trouve au croisement des 2 traits";
 		//Chargement des variables en stockage
 	localStorage.setItem("indicesActivated", JSON.stringify(indicesActivated)); 
 	localStorage.setItem("indicesTexte", JSON.stringify(indicesTexte)); 
@@ -76,24 +82,32 @@ function chargePage(numPage) {
 			//Chargement des indices :
 			ChargeIndices(3);
 			break;
-    case "s1571a" :
-        //Chargement des indices :
-        ChargeIndices(4);
-        break;
-		case "m6182p" :
-			//Chargement des indices :
-			MasterMind.initialise();
-      ChargeIndices(5);
-			break;
-    case "f4190b" :
-			//Chargement des indices :
-      ChargeIndices(6);
-			break;
-    case "o2550u" :
-			//Chargement des indices :
-      ChargeIndices(7);
-			break;
-		default:
+        case "s1571a" :
+            //Chargement des indices :
+            ChargeIndices(4);
+            break;
+	    case "m6182p" :
+		    //Chargement des indices :
+		    MasterMind.initialise();
+            ChargeIndices(5);
+		    break;
+        case "f4190b" :
+		    //Chargement des indices :
+            ChargeIndices(6);
+		    break;
+        case "o2550u" :
+		    //Chargement des indices :
+            ChargeIndices(7);
+		    break;
+        case "w9743q" :
+		    //Chargement des indices :
+            ChargeIndices(8);
+		    break;
+        case "t3643u" :
+		    //Chargement des indices :
+            ChargeIndices(9);
+		    break;
+	    default:
 			break;
 	}
 }
@@ -242,13 +256,13 @@ function valid(etapevalidee, score) {
 					return false;
 					break;
 			}
-    // Si 6 : Il flash le QRcode
+    // Si 6 : Il flash le Nfc
 		case 6 :
-      vainqueur(etapevalidee, score);
-      return true;
+            vainqueur(etapevalidee, score);
+            return true;
 			break;
     // Si 7 : couleur
-		case 5 :
+		case 7 :
 			var code = document.forms["RegForm"]["code"];
 			switch (code.value) {
 				case "Bleu":
@@ -257,6 +271,30 @@ function valid(etapevalidee, score) {
 					break;
 				default :
 					alert("Ce n'est pas la bonne couleur");
+					code.focus();
+					return false;
+					break;
+			}
+    // Si 8 : Il flash le nfc
+		case 8 :
+            vainqueur(etapevalidee, score);
+            return true;
+            break;
+    // Si 9 : Code sous le canapé
+		case 9 :
+			var code = document.forms["RegForm"]["code"];
+			switch (code.value) {
+				case "":
+					alert("Remplir le code !");
+					code.focus();
+					return false;
+					break;
+				case "1712":
+					vainqueur(etapevalidee, score);
+					return true;
+					break;
+				default :
+					alert("Le code n'est pas bon !");
 					code.focus();
 					return false;
 					break;
@@ -299,7 +337,13 @@ function vainqueur(etapevalidee, score) {
 			localStorage.setItem("popupTexte", "Tu as trouvé la boîte ! Fais-y attention, c'est fragile et elle semble fortement piégée !");
 			break;
     case 7:
-			localStorage.setItem("popupTexte", "Tu peux couper le fil bleu, c'était la bonne couleur !:");
+			localStorage.setItem("popupTexte", "Tu peux couper le fil bleu, c'était la bonne couleur !");
+			break;
+    case 8:
+			localStorage.setItem("popupTexte", "Superbe ! Tu l'as trouvé super vite !");
+			break;
+    case 9:
+			localStorage.setItem("popupTexte", "Bien joué ! Tu l'as trouvé ! Retient ce code, comme les autres, il te reservira surement ... ");
 			break;
 	}
 }
