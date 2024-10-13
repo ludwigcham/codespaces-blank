@@ -243,7 +243,8 @@ function popupIndiceNone() {
 //validation d'une étape
 function valid(etapevalidee, score) {
   //On saisie l'étape en cours
-  localStorage.setItem("etapeEnCours", etapevalidee+1);
+  etapeEnCours = etapevalidee+1;
+  localStorage.setItem("etapeEnCours", etapeEnCours);
 	//On teste si les resultats sont les bons
 	switch (etapevalidee) {
 		//Si étape 0 : initialisation du jeu
