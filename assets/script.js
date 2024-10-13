@@ -306,14 +306,14 @@ var MasterMind = {
 
             cell = document.createElement('td');
             cell.innerHTML = i;
-            cell.style.width = '32px';
+            cell.style.width = '50px';
             line.appendChild(cell);
 
             for (j = 1; j <= this.settings['columns']; j++) {
                 cell = document.createElement('td');
                 cell.innerHTML = '';
                 cell.id = 'turn-'+i+'-'+j;
-                cell.style.width = '32px';
+                cell.style.width = '50px';
                 cell.setAttribute('onclick', this.name+'.selectColumn('+i+', '+j+');');
                 line.appendChild(cell);
             }
@@ -336,7 +336,7 @@ var MasterMind = {
         for (i=1; i <= this.settings['colors']; i++) {
             cell = document.createElement('td');
             cell.innerHTML = '';
-            cell.style.width = '32px';
+            cell.style.width = '50px';
             line.appendChild(cell);
 
             pion = document.createElement('div');
