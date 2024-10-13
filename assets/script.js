@@ -32,6 +32,11 @@ function initGame() {
 	indicesTexte[4] = Array(2);
 	indicesTexte[4][0] = "Le nom de cette fleur devrait t'aider !";
   indicesTexte[4][1] = "C'est le seul endroit de ton appartement où il est normal d'en trouver !";
+    //Etape 5 =>  2 indice
+	indicesActivated[4] = Array(2).fill(0);
+	indicesTexte[4] = Array(2);
+	indicesTexte[4][0] = "Le nom de cette fleur devrait t'aider !";
+  indicesTexte[4][1] = "C'est le seul endroit de ton appartement où il est normal d'en trouver !";
 		//Chargement des variables en stockage
 	localStorage.setItem("indicesActivated", JSON.stringify(indicesActivated)); 
 	localStorage.setItem("indicesTexte", JSON.stringify(indicesTexte)); 
@@ -72,8 +77,8 @@ function chargePage(numPage) {
         break;
 		case "m6182p" :
 			//Chargement des indices :
-			ChargeIndices(5);
 			MasterMind.initialise();
+      ChargeIndices(5);
 			break;
 		default:
 			break;
