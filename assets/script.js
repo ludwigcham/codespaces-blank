@@ -867,6 +867,7 @@ var puzzle = {
 };
 
 function champi() {
+    console.log("champi()");
     compt_champi = localStorage.getItem("compt_champi");
     compt_champi++;
     if (compt_champi == 10) {
