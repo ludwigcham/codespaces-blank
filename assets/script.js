@@ -102,7 +102,7 @@ function chargePage(numPage) {
                         document.getElementById("t"+i).innerHTML = "➡️" + valeur;
                       } else {
                         valeur = document.getElementById("t"+i).innerHTML;
-                        document.getElementById("t"+y).innerHTML = valeur + "✅";
+                        document.getElementById("t"+i).innerHTML = valeur + "✅";
                       }
                     }
                   }
