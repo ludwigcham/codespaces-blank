@@ -237,12 +237,18 @@ label {
 }
 
 /*MASTERMIND*/
+
+/* game board */
 table {border-collapse:collapse;}
 table td {border:solid 1px white; padding:4px; text-align:center;font-family: system-ui;font-size: 2em;}
 table tr.selected td {background:#cdcdcd;}
 table tr td.valid {display:none;}
 table tr.selected td.valid {display:table-cell;}
 table tr.win td {background:#43b456;}
+
+/* menu */
+.menus .menu {padding:10px 25px; margin:8px; background:#4366b4; color:white; cursor:pointer; width:200px;}
+
 .game {margin: auto;width: 50%;margin-left: 25%;padding: 10px;}
 
 .button-indice-button {
