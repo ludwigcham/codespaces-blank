@@ -15,10 +15,12 @@
 		$("#menu").load("/assets/tpt_menu.html");
 		/*Activation du formulaire ou des compteurs*/
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
-        if (etapes[1]==1){
-          document.getElementById("formulaire").style.display = "none";
-          document.getElementById("compteur").style.display = "block";
-        }
+		if (etapes != undefined) {
+			if (etapes[1]==1){
+          		document.getElementById("formulaire").style.display = "none";
+          		document.getElementById("compteur").style.display = "block";
+        	}
+		}
       });
 	  /*Ce qui tourne toutes les secondes sur la page*/
       setInterval(() => {

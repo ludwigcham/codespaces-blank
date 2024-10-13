@@ -8,7 +8,7 @@ function initGame() {
 	localStorage.setItem("buttonActivated", JSON.stringify(etapesactivated)); //NBR de 0 par étape (avec intro et conclusion)
 	localStorage.setItem("scoreTotal", 0);
 	localStorage.setItem("scoreEnCours", 0);
-  localStorage.setItem("etapeEnCours", 0);
+  localStorage.setItem("etapeEnCours", 1);
 	localStorage.setItem("datedebut", Date.now());
     localStorage.setItem("datefin", Date.now());
 	localStorage.setItem("vainqueur", 1);	
@@ -243,8 +243,9 @@ function popupIndiceNone() {
 //validation d'une étape
 function valid(etapevalidee, score) {
   //On saisie l'étape en cours
-  etp = ParseInt(localStorage.getItem("etapeEnCours"));
-  localStorage.setItem("etapeEnCours",etp+1);
+  if (etapevalidee!=0) {
+    localStorage.setItem("etapeEnCours",etapevalidee+1);
+  }
 	//On teste si les resultats sont les bons
 	switch (etapevalidee) {
 		//Si étape 0 : initialisation du jeu
