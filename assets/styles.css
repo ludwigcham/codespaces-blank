@@ -121,6 +121,7 @@ label {
 
 .inactiv {
   pointer-events: none;
+  color:grey;
 }
 
 .container {

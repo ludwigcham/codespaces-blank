@@ -90,12 +90,11 @@ function chargePage(numPage) {
                 etapecrs = localStorage.getItem("etapeEnCours");
                 //Pour que les inactive ne soient pas cliquable
                 for (var i = 1; i < array.length; i++) {
-                    console.log(i);
-                    console.log(document.getElementById("e"+i).innerHTML);
-                    console.log(document.getElementById("t"+i).innerHTML);
+                    console.log(etapecrs);
                     //Si elle n'est pas active
                     if (array[i]=="0") {
                       document.getElementById("e"+i).classList.add("inactiv");
+                      document.getElementById("t"+i).classList.add("inactiv");
                     //Si elle est active
                     } else {
                       document.getElementById("e"+i).classList.add("activ");
