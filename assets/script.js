@@ -10,6 +10,7 @@ function initGame() {
 	localStorage.setItem("scoreEnCours", 0);
 	localStorage.setItem("etapeEnCours", 0);
 	localStorage.setItem("datedebut", Date.now());
+    localStorage.setItem("datefin", Date.now());
 	localStorage.setItem("vainqueur", 1);	
 	localStorage.setItem("popupTexte", "");	
     localStorage.setItem("compt_champi", 0);	
@@ -63,6 +64,12 @@ function initGame() {
 	indicesActivated[15] = Array(1).fill(0);
 	indicesTexte[15] = Array(1);
 	indicesTexte[15][0] = "Où notes-tu ce que tu fais ?";
+        //Etape 19 =>  3 indice
+	indicesActivated[19] = Array(3).fill(0);
+	indicesTexte[19] = Array(3);
+	indicesTexte[19][0] = "Les codes du jeu devaient être retenus !";
+    indicesTexte[19][1] = "Vois les comme des coordonnées";
+    indicesTexte[19][2] = "Utilise le plan de Bordeaux";
 		//Chargement des variables en stockage
 	localStorage.setItem("indicesActivated", JSON.stringify(indicesActivated)); 
 	localStorage.setItem("indicesTexte", JSON.stringify(indicesTexte)); 
@@ -142,6 +149,19 @@ function chargePage(numPage) {
         case "r6361k" :
 		    //Chargement des indices :
             ChargeIndices(15);
+		    break;
+        case "a3837a" :
+		    //Chargement des indices :
+            ChargeIndices(19);
+		    break;
+        case "y6215" :
+		    //Chargement de l'heure de fin
+            datedebut = localStorage.getItem("datedebut");
+            datefin = localStorage.getItem("datefin");
+            //Si c'est la prémière fois que l'on arrive ici
+            if(datedebut == datefin) {
+                localStorage.setItem("datefin", Date.now());
+            }
 		    break;
 	    default:
 			break;
@@ -444,6 +464,49 @@ function valid(etapevalidee, score) {
             vainqueur(etapevalidee, score);
             return true;
 			break;
+    // Si 17 : Resultat des équations
+		case 17 :
+			var code = document.forms["RegForm"]["code"];
+			switch (code.value) {
+				case "":
+					alert("Remplir le resultat !");
+					code.focus();
+					return false;
+					break;
+				case "4341":
+					vainqueur(etapevalidee, score);
+					return true;
+					break;
+				default :
+					alert("Le resultat n'est pas bon !");
+					code.focus();
+					return false;
+					break;
+			}
+    // Si 18 : Il a trouvé la 5ème étoile
+		case 18 :
+            vainqueur(etapevalidee, score);
+            return true;
+			break;
+    // Si 19 : Code du cadena
+		case 19 :
+			var code = document.forms["RegForm"]["code"];
+			switch (code.value) {
+				case "":
+					alert("Remplir le code !");
+					code.focus();
+					return false;
+					break;
+				case "1312":
+					vainqueur(etapevalidee, score);
+					return true;
+					break;
+				default :
+					alert("Le code n'est pas bon !");
+					code.focus();
+					return false;
+					break;
+			}
     default :
       	break;
 	}
@@ -510,6 +573,15 @@ function vainqueur(etapevalidee, score) {
 			break;
     case 16:
 			localStorage.setItem("popupTexte", "Et de 4 !");
+			break;
+    case 17:
+			localStorage.setItem("popupTexte", "Ils viennent de partir !");
+			break;
+    case 18:
+			localStorage.setItem("popupTexte", "Dernière étoile trouvée !");
+			break;
+    case 19:
+			localStorage.setItem("popupTexte", "On y est presque !");
 			break;
 	}
 }
