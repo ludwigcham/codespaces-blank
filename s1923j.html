@@ -15,7 +15,7 @@
 		$("#menu").load("/assets/tpt_menu.html");
 		/*Activation du formulaire ou des compteurs*/
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
-        if (etapes[14]==1){
+        if (etapes[15]==1){
           document.getElementById("formulaire").style.display = "none";
           document.getElementById("compteur").style.display = "block";
         }
@@ -30,7 +30,7 @@
       }, 1000)
     </script> 
 	</head>
-	<body onload="chargePage('c8568t')">
+	<body onload="chargePage('s1923j')">
     <!-- Popup Indice-->
     <div style="display:none;" class="popup-overlay" id="popup" onclick="popupIndiceNone()">
       <div class="popup" id="popup">
@@ -64,10 +64,8 @@
 			<!-- 2 - Epreuve/Texte -->
 			<div id="texte" class="carte activ">
 				<div class="container">
-          <h2><b>Trouve la phrase mystère</b></h2>
-          <p>Je t'ai fait livrer des matrices de décodage que j'ai trouvé dans le sas d'attente entre deux tubes vert.
-            <br>Je pense que Bowser les a laisser tomber et nous allons les utiliser ! 
-            <br>Elles doivent certainement servir à décoder le SMS reçu en début de jeu, saisi l'information trouvée :
+          <h2><b>Je suis un peu géné par le resultat ...</b></h2>
+          <p>J'espère que tu as su trouver d'autres éléments a décoder qui t'auront certainement permis de localiser une date :
           <p>	
 				</div>
       </div>
@@ -77,8 +75,8 @@
 		<div id="formulaire" class="">
 			<div class="container">
         <!-- Initialisation du jeu / Retour au menu (avec popup)-->
-        <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(13,200);" class="outer">
-          <input class="result_case" type="text" size="15" id="code" name="code">
+        <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(14,300);" class="outer">
+          <input class="result_case" type="text" size="5" id="code" name="code">
           <input class="button_slide" type="submit" value="✔" name="Valider">
         </form>
       </div>

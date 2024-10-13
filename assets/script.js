@@ -50,6 +50,19 @@ function initGame() {
 	indicesActivated[11] = Array(1).fill(0);
 	indicesTexte[11] = Array(1);
 	indicesTexte[11][0] = "Monte sur ta terrasse";
+        //Etape 13 =>  2 indice
+	indicesActivated[13] = Array(2).fill(0);
+	indicesTexte[13] = Array(2);
+	indicesTexte[13][0] = "Je te l'ai fait LIVRER...";
+    indicesTexte[13][0] = "...dans ta boîte aux lettres !";
+        //Etape 14 =>  1 indice
+	indicesActivated[14] = Array(1).fill(0);
+	indicesTexte[14] = Array(1);
+	indicesTexte[14][0] = "Dans les boîtes de thé !";
+        //Etape 15 =>  1 indice
+	indicesActivated[15] = Array(1).fill(0);
+	indicesTexte[15] = Array(1);
+	indicesTexte[15][0] = "Où notes-tu ce que tu fais ?";
 		//Chargement des variables en stockage
 	localStorage.setItem("indicesActivated", JSON.stringify(indicesActivated)); 
 	localStorage.setItem("indicesTexte", JSON.stringify(indicesTexte)); 
@@ -91,7 +104,6 @@ function chargePage(numPage) {
 	    case "m6182p" :
 		    //Chargement des indices :
 		    MasterMind.initialise();
-            ChargeIndices(5);
 		    break;
         case "f4190b" :
 		    //Chargement des indices :
@@ -103,7 +115,6 @@ function chargePage(numPage) {
 		    break;
         case "w9743q" :
 		    //Chargement des indices :
-            ChargeIndices(8);
 		    break;
         case "t3643u" :
 		    //Chargement des indices :
@@ -112,7 +123,6 @@ function chargePage(numPage) {
         case "z7946f" :
 		    //Chargement des indices :
             puzzle.game_init();
-            ChargeIndices(10);
 		    break;
         case "i5196f" :
 		    //Chargement des indices :
@@ -120,7 +130,18 @@ function chargePage(numPage) {
 		    break;
         case "l2005d" :
 		    //Chargement des indices :
-            ChargeIndices(12);
+		    break;
+        case "c8568t" :
+		    //Chargement des indices :
+            ChargeIndices(13);
+		    break;
+        case "s1923j" :
+		    //Chargement des indices :
+            ChargeIndices(14);
+		    break;
+        case "r6361k" :
+		    //Chargement des indices :
+            ChargeIndices(15);
 		    break;
 	    default:
 			break;
@@ -341,7 +362,85 @@ function valid(etapevalidee, score) {
             return true;
 			break;
     // Si 12 : Il a fait sauter 100 fois le champignons
-		case 11 :
+		case 12 :
+            vainqueur(etapevalidee, score);
+            return true;
+			break;
+    // Si 13 : Code pour dévérouillage
+		case 13 :
+			var code = document.forms["RegForm"]["code"];
+			switch (code.value) {
+				case "":
+					alert("Remplir la phrase !");
+					code.focus();
+					return false;
+					break;
+				case "Avec tes boules":
+					vainqueur(etapevalidee, score);
+					return true;
+					break;
+                case "avec tes boules":
+					vainqueur(etapevalidee, score);
+					return true;
+					break;
+				default :
+					alert("La phrase n'est pas bonne !");
+					code.focus();
+					return false;
+					break;
+			}
+    // Si 14 : Date trouvée
+		case 14 :
+			var code = document.forms["RegForm"]["code"];
+			switch (code.value) {
+				case "":
+					alert("Remplir la date !");
+					code.focus();
+					return false;
+					break;
+				case "28/02":
+					vainqueur(etapevalidee, score);
+					return true;
+					break;
+				default :
+					alert("La date n'est pas bonne !");
+					code.focus();
+					return false;
+					break;
+			}
+    // Si 15 : Place du rdv
+		case 15 :
+			var code = document.forms["RegForm"]["code"];
+			switch (code.value) {
+				case "":
+					alert("Remplir la place !");
+					code.focus();
+					return false;
+					break;
+				case "Comédie":
+					vainqueur(etapevalidee, score);
+					return true;
+					break;
+                case "Comedie":
+					vainqueur(etapevalidee, score);
+					return true;
+					break;
+                case "comédie":
+					vainqueur(etapevalidee, score);
+					return true;
+					break;
+                case "comedie":
+					vainqueur(etapevalidee, score);
+					return true;
+					break;
+				default :
+					alert("La place n'est pas bonne !");
+					code.focus();
+					return false;
+					break;
+			}
+    // Si 16 : Il a trouvé la 4ème étoile
+		case 16 :
             vainqueur(etapevalidee, score);
             return true;
 			break;
@@ -399,6 +498,18 @@ function vainqueur(etapevalidee, score) {
 			break;
     case 12:
 			localStorage.setItem("popupTexte", "Super ! Je viens de partir dans le tube !");
+			break;
+	case 13:
+			localStorage.setItem("popupTexte", "Très fort ! C'était exactement ça ... Euuuh ...");
+			break;
+    case 14:
+			localStorage.setItem("popupTexte", "Top ! Tu as trouvé la bonne date !");
+			break;
+    case 15:
+			localStorage.setItem("popupTexte", "Super tu as trouvé l'information là où elle était !");
+			break;
+    case 16:
+			localStorage.setItem("popupTexte", "Et de 4 !");
 			break;
 	}
 }
@@ -871,7 +982,7 @@ function champi() {
     compt_champi = localStorage.getItem("compt_champi");
     console.log(compt_champi);
     compt_champi++;
-    if (compt_champi == 10) {
+    if (compt_champi == 100) {
         valid(12,50);
         window.location.href="./menu.html";
     } else {
