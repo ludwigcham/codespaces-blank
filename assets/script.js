@@ -674,7 +674,7 @@ var puzzle = {
         this.blockOrder = ["1", "2", "3", "4", "", "5", "6", "7", "8"];
         this.write();
         this.suffle();
-        document.addEventListener("click",function (e) {moveBlock(e.target.id);},false);
+        document.addEventListener("click",function (e) {this.moveBlock(e.target.id);},false);
     },
 
     //Write
