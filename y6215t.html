@@ -29,6 +29,18 @@
     </script> 
 	</head>
 	<body onload="chargePage('y6215t')">
+		<!-- Popup Validation Etape-->
+		<div style="display:none;" class="popup-overlay" id="popupValidation" onclick="popupNone()">
+		  <div class="popup" id="popupValidation">
+			<span class="close" id="closePopup">&times;</span>
+			<div class="popup-content">
+			  <p class="pblack" id="myPopup">texte</p>
+			  <h1 style="display:inline;" class="pblack" id="myPopupscore">score</h1>
+			  <img style="display:inline;width:5%;margin-left:2%" src="/assets/mario-coins.gif">
+			</div>
+		  </div>
+		</div>
+	
 		<!-- Haut de page -->
 		<div id="haut_page">
 			<!-- Boite menu + Logo -->
