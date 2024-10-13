@@ -107,6 +107,11 @@ function chargePage(numPage) {
 		    //Chargement des indices :
             ChargeIndices(9);
 		    break;
+        case "z7946f" :
+		    //Chargement des indices :
+            ChargeIndices(10);
+            game_init();
+		    break;
 	    default:
 			break;
 	}
