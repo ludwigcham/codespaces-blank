@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Super Mario Escape : La Quête des Étoiles disparues</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <!-- Scripts de chargement de page -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/assets/script.js"></script>
+    <script> 
+      $(function(){
+		/*Chargement des HTML externes*/
+        $("#compteur").load("/assets/tpt_compteurs.html");
+		$("#menu").load("/assets/tpt_menu.html");
+		/*Activation du formulaire ou des compteurs*/
+        var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+        if (etapes[13]==1){
+          document.getElementById("formulaire").style.display = "none";
+          document.getElementById("compteur").style.display = "block";
+        }
+      });
+	  /*Ce qui tourne toutes les secondes sur la page*/
+      setInterval(() => {
+		var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+		if (etapes != undefined) {
+        	document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
+        	document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
+		}
+      }, 1000)
+    </script> 
+	</head>
+	<body onload="chargePage('l2005d')">
+    <!-- Popup Indice-->
+    <div style="display:none;" class="popup-overlay" id="popup" onclick="popupIndiceNone()">
+      <div class="popup" id="popup">
+        <span class="close" id="closePopup">&times;</span>
+        <div class="popup-content">
+          <p class="pblack" id="myPopupIndice"></p>
+        </div>
+      </div>
+    </div>
+
+		<!-- Haut de page -->
+		<div id="haut_page">
+			<!-- Boite menu + Logo -->
+			<div id="menu"></div>
+			<!-- Compteurs -->
+			<div id="compteur"></div>
+		</div>
+
+		<!-- Centre de page -->
+		<div id="centre_page">
+			<!-- 1 - Indices -inactif dans cette page -->
+			<div id="indices" class="carte activ">
+        <div class="container">
+				  <h2 style="display:inline;">Indice(s) : </h2>
+          <div id="indicesBox" style="display:inline;">
+            <div id="indicesBoxButton" style="display:inline;" class="buttons">           
+            </div>
+          </div>
+			  </div>
+      </div>
+			<!-- 2 - Epreuve/Texte -->
+			<div id="texte" class="carte activ">
+				<div class="container">
+          <h2><b>Trouve le code de déverouillage</b></h2>
+          <p>Je viens de comprendre, nous avons reçu un message codé au début du jeu et Bowser vient de passer devant moi avec des documents confidentiels.
+            <br>Je crois bien avoir vu des matrices de décodage, je vais tenter de mettre la main dessus !
+            <br><br>Pour ça, je vais avoir besoin de ton aide, appuie sur le champignon pour me propulser dans le tube !
+          <p>	
+          <img style="width:80%;margin-left:7%" src="/assets/champi.png" onclik="champi()"/>
+				</div>
+      </div>
+		</div>
+
+		<!-- Pied de page - Formulaire de resultat/Boutons -->
+		<div id="formulaire" class="">
+			<div class="container">
+        <!-- Initialisation du jeu / Retour au menu (avec popup)-->
+        <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(12,150);" class="outer">
+          <input class="result_case" type="number" pattern="[0-9]*" min="0" max="9999" id="code" name="code">
+          <input class="button_slide" type="submit" value="✔" name="Valider">
+        </form>
+      </div>
+		</div>
+	</body>
+</html>

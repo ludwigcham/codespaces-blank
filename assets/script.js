@@ -1,6 +1,6 @@
 //Initialisation des variables du jeu
 function initGame() {
-	var nbrctivities = 5;
+	var nbrctivities = 20;
 	//initialisation des variables locales
 	var etapesactivated = Array(nbrctivities).fill(0);
 	etapesactivated[0] = 1;
@@ -12,12 +12,10 @@ function initGame() {
 	localStorage.setItem("datedebut", Date.now());
 	localStorage.setItem("vainqueur", 1);	
 	localStorage.setItem("popupTexte", "");	
+    localStorage.setItem("compt_champi", 0);	
 	//Gestion des indices
 	var indicesActivated = Array(nbrctivities);
 	var indicesTexte = Array(nbrctivities);
-		//Etape 0 => Pas d'indices
-	indicesActivated[0] = Array();
-	indicesTexte[0] = Array();
 		//Etape 1 => 2 indices
 	indicesActivated[1] = Array(2).fill(0);
 	indicesTexte[1] = Array(2);
@@ -48,6 +46,10 @@ function initGame() {
 	indicesTexte[9][0] = "Tu as déjà trouvé des objets chez toi ?";
     indicesTexte[9][1] = "Positionne les objets trouvés et trace 2 traits";
     indicesTexte[9][2] = "Le code se trouve au croisement des 2 traits";
+        //Etape 11 =>  1 indice
+	indicesActivated[11] = Array(1).fill(0);
+	indicesTexte[11] = Array(1);
+	indicesTexte[11][0] = "Monte sur ta terrasse";
 		//Chargement des variables en stockage
 	localStorage.setItem("indicesActivated", JSON.stringify(indicesActivated)); 
 	localStorage.setItem("indicesTexte", JSON.stringify(indicesTexte)); 
@@ -112,6 +114,14 @@ function chargePage(numPage) {
             puzzle.game_init();
             ChargeIndices(10);
 		    break;
+        case "i5196f" :
+		    //Chargement des indices :
+            ChargeIndices(11);
+		    break;
+        case "l2005d" :
+		    //Chargement des indices :
+            ChargeIndices(12);
+		    break;
 	    default:
 			break;
 	}
@@ -125,16 +135,20 @@ function ChargeIndices(numPage) {
 	var indicesActivated_e = indicesActivated[numPage];
 	var indicesTexte_e = indicesTexte[numPage];
 	var TexteHtml = "";
-	for (var i = 0; i < indicesActivated_e.length; i++) {
-		ind = i+1;
-		//Est-ce qu'il est free ?
-		if (indicesActivated_e[i]==1) {
-			TexteHtml = TexteHtml + '<button id="' + numPage + '_' + i + '" type="button" style="display:inline;" class="button_indice button_indice_on" onclick="popupIndice(' + numPage + ',' + i + ')">' + ind + '</button>';
-		} else {
-			TexteHtml = TexteHtml + '<button id="' + numPage + '_' + i + '" type="button" style="display:inline;" class="button_indice" onclick="popupIndice(' + numPage + ',' + i + ')">' + ind + '</button>';
-		}
-	}
-	document.getElementById("indicesBoxButton").innerHTML = TexteHtml;
+    if (indicesActivated_e != undefined) {
+        for (var i = 0; i < indicesActivated_e.length; i++) {
+            ind = i+1;
+            //Est-ce qu'il est free ?
+            if (indicesActivated_e[i]==1) {
+                TexteHtml = TexteHtml + '<button id="' + numPage + '_' + i + '" type="button" style="display:inline;" class="button_indice button_indice_on" onclick="popupIndice(' + numPage + ',' + i + ')">' + ind + '</button>';
+            } else {
+                TexteHtml = TexteHtml + '<button id="' + numPage + '_' + i + '" type="button" style="display:inline;" class="button_indice" onclick="popupIndice(' + numPage + ',' + i + ')">' + ind + '</button>';
+            }
+        }
+        document.getElementById("indicesBoxButton").innerHTML = TexteHtml;
+    } else {
+        document.getElementById("indices").style.display="none";
+    }
 }
 
 //Menu : Désactiver le popup 
@@ -321,6 +335,16 @@ function valid(etapevalidee, score) {
                 return false;
             }
             break;
+    // Si 11 : Il flash le Nfc
+		case 11 :
+            vainqueur(etapevalidee, score);
+            return true;
+			break;
+    // Si 12 : Il a fait sauter 100 fois le champignons
+		case 11 :
+            vainqueur(etapevalidee, score);
+            return true;
+			break;
     default :
       	break;
 	}
@@ -366,6 +390,15 @@ function vainqueur(etapevalidee, score) {
 			break;
     case 9:
 			localStorage.setItem("popupTexte", "Bien joué ! Tu l'as trouvé ! Retient ce code, comme les autres, il te reservira surement ... ");
+			break;
+    case 10:
+			localStorage.setItem("popupTexte", "Wha très fort la résolution de ce puzzle ! Pas si simple ...");
+			break;
+    case 11:
+			localStorage.setItem("popupTexte", "Bien joué ! Il fallait la trouver celle là !");
+			break;
+    case 12:
+			localStorage.setItem("popupTexte", "Super ! Je viens de partir dans le tube !");
 			break;
 	}
 }
@@ -832,3 +865,13 @@ var puzzle = {
         this.write();
     },
 };
+
+function champi() {
+    compt_champi = localStorage.getItem("compt_champi");
+    compt_champi++;
+    if (compt_champi == 10) {
+        valid(12,50)
+    } else {
+        localStorage.setItem("compt_champi", compt_champi);
+    }
+}
