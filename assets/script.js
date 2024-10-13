@@ -1,6 +1,6 @@
 //Initialisation des variables du jeu
 function initGame() {
-	var nbrctivities = 20;
+	var nbrctivities = 21;
 	//initialisation des variables locales
 	var etapesactivated = Array(nbrctivities).fill(0);
 	etapesactivated[0] = 1;
@@ -327,8 +327,8 @@ function valid(etapevalidee, score) {
 			}
     // Si 6 : Il flash le Nfc
 		case 6 :
-            vainqueur(etapevalidee, score);
-            return true;
+      vainqueur(etapevalidee, score);
+      return true;
 			break;
     // Si 7 : couleur
 		case 7 :
