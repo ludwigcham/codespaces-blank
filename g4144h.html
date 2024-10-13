@@ -17,6 +17,7 @@
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
         if (etapes[4]==1){
           document.getElementById("formulaire").style.display = "none";
+          document.getElementById("formulaire_resultat").style.display = "block";
           document.getElementById("compteur").style.display = "block";
         }
       });
@@ -31,6 +32,18 @@
     </script> 
 	</head>
 	<body onload="chargePage('g4144h')">
+    <!-- Popup Validation Etape-->
+    <div style="display:none;" class="popup-overlay" id="popup" onclick="popupNone()">
+      <div class="popup" id="popup">
+        <span class="close" id="closePopup">&times;</span>
+        <div class="popup-content">
+          <p class="pblack" id="myPopup">texte</p>
+          <h1 class="pblack" id="myPopupscore">score</h1>
+          <img style="display:inline;width:5%;" src="/assets/mario-coins.gif">
+        </div>
+      </div>
+    </div>
+
     <!-- Popup Indice-->
     <div style="display:none;" class="popup-overlay" id="popup" onclick="popupIndiceNone()">
       <div class="popup" id="popup">
@@ -80,9 +93,17 @@
 		<div id="formulaire" class="">
 			<div class="container">
         <!-- Initialisation du jeu / Retour au menu (avec popup)-->
-        <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(3,250);" class="outer">
+        <form action="s1571a.html" name="RegForm" type="GET" onsubmit="return valid(3,250);" class="outer">
           <input class="result_case" type="number" pattern="[0-9]*" min="0" max="9999" id="code" name="code">
           <input class="button_slide" type="submit" value="✔" name="Valider">
+        </form>
+      </div>
+		</div>
+    <div id="formulaire_resultat" style="display:none;">
+			<div class="container">
+        <!-- Initialisation du jeu / Retour au menu (avec popup)-->
+        <form action="s1571a.html" name="RegForm" type="GET" onsubmit="" class="outer">
+          <input class="result_case" type="number" value="0716">
         </form>
       </div>
 		</div>

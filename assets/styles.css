@@ -50,6 +50,12 @@ label {
   width: 95%;
 }
 
+#formulaire_resultat {
+  position: absolute;
+  bottom: 30px;
+  width: 95%;
+}
+
 #centre_page {
   position: absolute;
   top: 17%;
