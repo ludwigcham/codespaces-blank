@@ -82,7 +82,7 @@ function chargePage(numPage) {
 			var array = JSON.parse(localStorage.getItem("etapeActivated"))
             if (array != undefined) {
                 //Pour que les inactive ne soient pas cliquable
-                for (var i = 0; i < array.length; i++) {
+                for (var i = 1; i < array.length; i++) {
                     if (array[i]=="0") {
                         document.getElementById("e"+i).classList.add("inactiv")
                     } else {
