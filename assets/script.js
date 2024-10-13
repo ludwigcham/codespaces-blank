@@ -8,6 +8,7 @@ function initGame() {
 	localStorage.setItem("buttonActivated", JSON.stringify(etapesactivated)); //NBR de 0 par étape (avec intro et conclusion)
 	localStorage.setItem("scoreTotal", 0);
 	localStorage.setItem("scoreEnCours", 0);
+  localStorage.setItem("etapeEnCours", 0);
 	localStorage.setItem("datedebut", Date.now());
     localStorage.setItem("datefin", Date.now());
 	localStorage.setItem("vainqueur", 1);	
@@ -85,17 +86,24 @@ function chargePage(numPage) {
 		case "menu" :
 			var array = JSON.parse(localStorage.getItem("etapeActivated"))
             if (array != undefined) {
+                //On récupère l'étape en cours
+                etapecrs = localStorage.getItem("etapeEnCours");
                 //Pour que les inactive ne soient pas cliquable
                 for (var i = 1; i < array.length; i++) {
+                    //Si elle n'est pas active
                     if (array[i]=="0") {
-                        document.getElementById("e"+i).classList.add("inactiv")
+                      document.getElementById("e"+i).classList.add("inactiv")
+                    //Si elle est active
                     } else {
-                        document.getElementById("e"+i).classList.add("activ");
-                        y=i-1;
-                        valeur = document.getElementById("t"+y).innerHTML;
-                        document.getElementById("t"+y).innerHTML = valeur + "✅";
-                        valeur2 = document.getElementById("t"+y).innerHTML;
+                      document.getElementById("e"+i).classList.add("activ");
+                      //Si c'est celle en cours :
+                      if (i==etapecrs){
+                        valeur = document.getElementById("t"+i).innerHTML;
                         document.getElementById("t"+i).innerHTML = "➡️" + valeur;
+                      } else {
+                        valeur = document.getElementById("t"+i).innerHTML;
+                        document.getElementById("t"+y).innerHTML = valeur + "✅";
+                      }
                     }
                   }
             } else {
@@ -232,6 +240,8 @@ function popupIndiceNone() {
 
 //validation d'une étape
 function valid(etapevalidee, score) {
+  //On saisie l'étape en cours
+  localStorage.setItem("etapeEnCours", etapevalidee+1);
 	//On teste si les resultats sont les bons
 	switch (etapevalidee) {
 		//Si étape 0 : initialisation du jeu
