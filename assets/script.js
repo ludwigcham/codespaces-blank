@@ -87,7 +87,7 @@ function chargePage(numPage) {
                         document.getElementById("e"+i).classList.add("inactiv")
                     } else {
                         document.getElementById("e"+i).classList.add("activ");
-                        document.getElementById("t"+i).innerHTML = "✅ " + document.getElementById("t"+i).innerHTML;
+                        document.getElementById("t"+i).innerHTML = "✅ " + document.getElementById("t"+i).value;
                     }
                   }
             } else {
