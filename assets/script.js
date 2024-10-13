@@ -243,7 +243,7 @@ function popupIndiceNone() {
 //validation d'une étape
 function valid(etapevalidee, score) {
   //On saisie l'étape en cours
-  etapeEnCours = etapevalidee+1;
+  etapeEnCours = ParseInt(etapevalidee)+1;
   localStorage.setItem("etapeEnCours", etapeEnCours);
 	//On teste si les resultats sont les bons
 	switch (etapevalidee) {
