@@ -240,7 +240,7 @@ label {
 
 /* game board */
 table {border-collapse:collapse;}
-table td {border:solid 1px white; padding:4px; text-align:center;font-family: system-ui;font-size: 2.5m;color:white}
+table td {border:solid 1px white; padding:4px; text-align:center;font-family: system-ui;font-size: 2.5em;color:white}
 table tr.selected td {background:#cdcdcd;}
 table tr.selected td.selected {background:#e8dda5;}
 table tr td.valid {display:none;}

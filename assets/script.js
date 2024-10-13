@@ -265,7 +265,7 @@ var MasterMind = {
     },
 
     colors: {
-        1: '#E92222', // rouge
+        1: '#593511', // marron
         2: '#F44900', // orange
         3: '#C0B81C', // jaune
         4: '#109932', // vert foncé
@@ -273,7 +273,7 @@ var MasterMind = {
         6: '#13666F', // bleu azur
         7: '#B478DE', // violet pastel
         8: '#501C72', // violet
-        9: '#4A0244', // violet foncé
+        9: '#1A30AC', // bleu foncé
         10: '#97245A', // rose
     },
 
@@ -365,8 +365,6 @@ var MasterMind = {
         this.game['soluce'][4] = 4;
         this.game['soluce'][5] = 5;
         this.game['soluce'][6] = 6;
-        this.game['soluce'][7] = 7;
-        this.game['soluce'][8] = 8;
         
     },
 
