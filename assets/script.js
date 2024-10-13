@@ -91,7 +91,7 @@ function chargePage(numPage) {
                     }
                   }
             } else {
-                for (var i = 0; i < array.length; i++) {
+                for (var i = 1; i < 21; i++) {
                     document.getElementById("e"+i).classList.add("inactiv");
                   }
             }
