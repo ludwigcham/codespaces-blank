@@ -87,7 +87,8 @@ function chargePage(numPage) {
                         document.getElementById("e"+i).classList.add("inactiv")
                     } else {
                         document.getElementById("e"+i).classList.add("activ");
-                        //document.getElementById("t"+i).innerHTML = "✅ " + document.getElementById("t"+i).value;
+                        valeur = document.getElementById("t"+i).innerHTML;
+                        document.getElementById("t"+i).innerHTML = "✅ " + valeur;
                     }
                   }
             } else {
@@ -112,10 +113,10 @@ function chargePage(numPage) {
 			//Chargement des indices :
 			ChargeIndices(3);
 			break;
-        case "s1571a" :
-            //Chargement des indices :
-            ChargeIndices(4);
-            break;
+    case "s1571a" :
+      //Chargement des indices :
+        ChargeIndices(4);
+      break;
 	    case "m6182p" :
 		    //Chargement des indices :
 		    MasterMind.initialise();
