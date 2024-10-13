@@ -233,6 +233,9 @@ function vainqueur(etapevalidee, score) {
     case 3:
 			localStorage.setItem("popupTexte", "Top ! Tu viens d'activer le système ! Je reçois des premières infos.");
 			break;
+    case 4:
+			localStorage.setItem("popupTexte", "Cette étoile te rapporte pas mal de coins !");
+			break;
 	}
 }
 
@@ -307,14 +310,6 @@ var MasterMind = {
                 cell.id = 'turn-'+i+'-'+j;
                 cell.style.width = '32px';
                 cell.setAttribute('onclick', this.name+'.selectColumn('+i+', '+j+');');
-                line.appendChild(cell);
-            }
-
-            for (j = 1; j <= this.settings['columns']; j++) {
-                cell = document.createElement('td');
-                cell.innerHTML = '';
-                cell.id = 'result-'+i+'-'+j;
-                cell.style.width = '16px';
                 line.appendChild(cell);
             }
 
@@ -478,15 +473,14 @@ var MasterMind = {
             /* Affiche les pions bien ou mal placés */
             for (i = 1; i <= this.settings['columns']; i++) {
                 pion = document.createElement('div');
+                var color = "";
                 //S'il est bien placé
                 if (tabres[i]==2) {
-                  pion.className = 'correct';
+                  color = "black";
                 } else if (tabres[i]==1) {
-                  pion.className = 'misplaced';
-                } else {
-                  pion.innerHTML="&times;";
+                  color = "white";
                 }
-                document.getElementById('result-'+this.game['turn']+'-'+i).appendChild(pion);
+                document.getElementById('turn-'+this.game['turn']+'-'+i).style.backgroundColor = color;
             }
 
         /* Prepare le jeu pour le tour suivant */

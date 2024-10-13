@@ -4,61 +4,76 @@
 		<meta charset="UTF-8">
 		<title>Super Mario Escape : La Quête des Étoiles disparues</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
-		<link rel="icon" type="image/x-icon" href="/assets/logo.png">
+		<link rel="icon" type="image/x-icon" href="/assets/favicon.png">
     <!-- Scripts de chargement de page -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/assets/script.js"></script>
     <script> 
       $(function(){
-        MasterMind.initialise();
+		/*Chargement des HTML externes*/
         $("#compteur").load("/assets/tpt_compteurs.html");
+		$("#menu").load("/assets/tpt_menu.html");
+		/*Activation du formulaire ou des compteurs*/
         var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
-        console.log(etapes);
-        if (etapes[5]==1){//CHANGER LE NUMERO DE L'ETAPE POUR DESACTIVER LE FORMULAIRE
+        if (etapes[6]==1){
           document.getElementById("formulaire").style.display = "none";
-          document.getElementById("compteur").style.display = "block"; 
+          document.getElementById("compteur").style.display = "block";
         }
       });
+	  /*Ce qui tourne toutes les secondes sur la page*/
       setInterval(() => {
-        var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
-        document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
-        document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
-        document.getElementById("stape").innerHTML = '2 / ' +  etapes.length;
+		var etapes = JSON.parse(localStorage.getItem("etapeActivated"));
+		if (etapes != undefined) {
+        	document.getElementById("timer").innerHTML = parseMillisecondsIntoReadableTime(Date.now()- localStorage.getItem("datedebut"));
+        	document.getElementById("score_zone").innerHTML = localStorage.getItem("scoreTotal");
+		}
       }, 1000)
     </script> 
 	</head>
 	<body onload="chargePage('m6182p')">
-
     <!-- Popup Indice-->
     <div style="display:none;" class="popup-overlay" id="popup" onclick="popupIndiceNone()">
       <div class="popup" id="popup">
         <span class="close" id="closePopup">&times;</span>
         <div class="popup-content">
-          <p id="myPopupIndice"></p>
+          <p class="pblack" id="myPopupIndice"></p>
         </div>
       </div>
     </div>
 
-		<!-- Haut de la page -->
-		<a href="menu.html"><img class="logo" src="/assets/logo.png"></a>
-		
-		<!-- Blocs centraux -->
-		<div id="liste_etape">
-		
-			<!-- 1 - Compteurs -->
+		<!-- Haut de page -->
+		<div id="haut_page">
+			<!-- Boite menu + Logo -->
+			<div id="menu"></div>
+			<!-- Compteurs -->
 			<div id="compteur"></div>
-		
+		</div>
+
+		<!-- Centre de page -->
+		<div id="centre_page">
+			<!-- 1 - Indices -inactif dans cette page -->
+			<div id="indices" class="carte activ">
+        <div class="container">
+				  <h2 style="display:inline;">Indice(s) : </h2>
+          <div id="indicesBox" style="display:inline;">
+            <div id="indicesBoxButton" style="display:inline;" class="buttons">           
+            </div>
+          </div>
+			  </div>
+      </div>
 			<!-- 2 - Epreuve/Texte -->
 			<div id="texte" class="carte activ">
 				<div class="container">
-          <h2><b>Trouver le numéro de téléphone</b></h2>
-          <p>Tu viens d'activer le système, Luigi est maintenant joignable via son numéro français que tu retrouveras grace à l'histoire suivante : 
+          <h2><b>Rétablissons la connexion</b></h2>
+          <p>Bowser t'a encore réserver un beau défis ! Disons qu'il vient d'encoder la communication que tu pouvais avoir avec Luigi.
+          <br><br>Pour t'en sortir, tu vas devoir résoudre le MasterMind suivant et entrer le code de 6 chiffres trouvés grace aux couleurs :
+          <br><br><i>NOIR : Bonne position</i>
+          <br><i>BLANC : Bonne couleur mais mauvaise position</i>
           <p>	
           <!-- MasterMind -->  
           <div class="game">
             <table>
                 <tbody id="plateau">
-
                 </tbody>
             </table>
             <p>
@@ -78,29 +93,21 @@
                     <td>10</td>
                   </tr>
                 </tbody>
-                <tbody id="colorSelector">
-
-                </tbody>
+                <tbody id="colorSelector"></tbody>
             </table>
           </div>
 				</div>
-			</div>
-		
-      <!-- 3 - Indices -->
-			<div style="display:none;" id="indices" class="carte activ">
       </div>
-		
-			<!-- 4 - Formulaire de resultat/Boutons -->
-			<div id="formulaire" class="carte activ">
-				<div class="container">
-          <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(2,150);" class="outer">
-					  <div>
-              <label for="code"><b>Numéro à 11 chiffres :</b></label>
-              <input class="result_case" type="number" pattern="[0-9]*" min="0" max="33999999999" id="code" name="code" />
-            </div>
-            <div class="buttons"><input class="button_slide" type="submit" value="Valider" name="Valider" /></div>
-				  </form>
-			  </div>
+		</div>
+
+		<!-- Pied de page - Formulaire de resultat/Boutons -->
+		<div id="formulaire" class="">
+			<div class="container">
+        <!-- Initialisation du jeu / Retour au menu (avec popup)-->
+        <form action="menu.html" name="RegForm" type="GET" onsubmit="return valid(5,300);" class="outer">
+          <input class="result_case" type="number" pattern="[0-9]*" min="0" max="999999" id="code" name="code">
+          <input class="button_slide" type="submit" value="✔" name="Valider">
+        </form>
       </div>
 		</div>
 	</body>

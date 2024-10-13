@@ -24,6 +24,11 @@ h3{
   font-size: 1.5em;
 }
 
+h4{
+  font-family: system-ui;
+  font-size: 1.5em;
+}
+
 p {
   font-family: system-ui;
   font-size: 2.5em;
