@@ -260,6 +260,7 @@ table tr.win td {background:#43b456;}
   grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 5px;
   width: 500px;
+  margin-left: 22.5%;
 }
 
 .wrapper div {
@@ -277,12 +278,6 @@ table tr.win td {background:#43b456;}
 
 .emptyblock {
   background-color: var(--color) !important;
-}
-
-.footer {
-  text-align: center;
-  grid-column: 1 / span 3;
-  font-size: 1em;
 }
 
 a {

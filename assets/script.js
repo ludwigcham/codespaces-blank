@@ -109,8 +109,8 @@ function chargePage(numPage) {
 		    break;
         case "z7946f" :
 		    //Chargement des indices :
-            ChargeIndices(10);
             game_init();
+            ChargeIndices(10);
 		    break;
 	    default:
 			break;
@@ -304,6 +304,23 @@ function valid(etapevalidee, score) {
 					return false;
 					break;
 			}
+    // Si 10 : Mini_jeu : On vérifie si tous les éléments sont bien placés
+		case 10 :
+            correctnum = 0
+            for (i=0 ; i<=7 ; i++) {
+                //On teste chaque nombre
+                if (document.getElementById(i).innerHTML == i+1) {
+                    correctnum++  
+                }
+            }
+            if (correctnum == 8) {
+                vainqueur(etapevalidee, score);
+                return true;
+            } else {
+                alert("Tu n'as pas résolu le puzzle !");
+                return false;
+            }
+            break;
     default :
       	break;
 	}
@@ -649,175 +666,169 @@ function parseMillisecondsIntoReadableTime(milliseconds){
 }
 
 //PUZZLE
-var blockOrder = ["1", "2", "3", "4", "", "5", "6", "7", "8"];
+var puzzle = {
+    blockOrder:Array(9),
 
-//Start
-function game_init() {
-  var blockOrder = ["1", "2", "3", "4", "", "5", "6", "7", "8"];
-  write();
-  suffle();
-}
+    //Start
+    game_init: function() {
+        this.blockOrder = ["1", "2", "3", "4", "", "5", "6", "7", "8"];
+        this.write();
+        this.suffle();
+        document.addEventListener("click",function (e) {moveBlock(e.target.id);},false);
+    },
 
-function write() {
-  blockOrder.forEach(function (item, index) {
-    document.getElementById(index).innerHTML = item;
-    let element1 = document.getElementById(index);
-    element1.classList.remove("emptyblock");
-    if (item == "") {
-      let element = document.getElementById(index);
-      element.classList.add("emptyblock");
-    }
-  });
-}
+    //Write
+    write: function() {
+        this.blockOrder.forEach(function (item, index) {
+            document.getElementById(index).innerHTML = item;
+            let element1 = document.getElementById(index);
+            element1.classList.remove("emptyblock");
+            if (item == "") {
+              let element = document.getElementById(index);
+              element.classList.add("emptyblock");
+            }
+        });
+    },
 
-//Suffle block on start
-function suffle() {
-  for (let i = 0; i < 100; i++) {
-    var block = Math.floor(Math.random() * (8 + 1));
-    moveBlock(block);
-  }
-}
+    //Write
+    suffle: function() {
+        for (let i = 0; i < 100; i++) {
+            var block = Math.floor(Math.random() * (8 + 1));
+            this.moveBlock(block);
+        }
+    },
 
-//Move block
-function moveBlock(block) {
-  if (block == 0) {
-    if (blockOrder[1] == 0) {
-      swap(0, 1);
-      return;
-    }
-    if (blockOrder[3] == 0) {
-      swap(0, 3);
-      return;
-    }
-  }
+    //Move block
+    moveBlock: function(block) {
+        if (block == 0) {
+            if (blockOrder[1] == 0) {
+              this.swap(0, 1);
+              return;
+            }
+            if (blockOrder[3] == 0) {
+              this.swap(0, 3);
+              return;
+            }
+          }
+        
+          if (block == 1) {
+            if (blockOrder[0] == 0) {
+              this.swap(1, 0);
+              return;
+            }
+            if (blockOrder[4] == 0) {
+              this.swap(1, 4);
+              return;
+            }
+            if (blockOrder[2] == 0) {
+              this.swap(1, 2);
+              return;
+            }
+          }
+        
+          if (block == 2) {
+            if (blockOrder[1] == 0) {
+              this.swap(2, 1);
+              return;
+            }
+            if (blockOrder[5] == 0) {
+              this.swap(2, 5);
+              return;
+            }
+          }
+        
+          if (block == 3) {
+            if (blockOrder[0] == 0) {
+              this.swap(3, 0);
+              return;
+            }
+            if (blockOrder[4] == 0) {
+              this.swap(3, 4);
+              return;
+            }
+            if (blockOrder[6] == 0) {
+              this.swap(3, 6);
+              return;
+            }
+          }
+        
+          if (block == 4) {
+            if (blockOrder[1] == 0) {
+              this.swap(4, 1);
+              return;
+            }
+            if (blockOrder[3] == 0) {
+              this.swap(4, 3);
+              return;
+            }
+            if (blockOrder[5] == 0) {
+              this.swap(4, 5);
+              return;
+            }
+            if (blockOrder[7] == 0) {
+              this.swap(4, 7);
+              return;
+            }
+          }
+        
+          if (block == 5) {
+            if (blockOrder[2] == 0) {
+              this.swap(5, 2);
+              return;
+            }
+            if (blockOrder[4] == 0) {
+              this.swap(5, 4);
+              return;
+            }
+            if (blockOrder[8] == 0) {
+              this.swap(5, 8);
+              return;
+            }
+          }
+        
+          if (block == 6) {
+            if (blockOrder[3] == 0) {
+              this.swap(6, 3);
+              return;
+            }
+            if (blockOrder[7] == 0) {
+              this.swap(6, 7);
+              return;
+            }
+          }
+        
+          if (block == 7) {
+            if (blockOrder[6] == 0) {
+              this.swap(7, 6);
+              return;
+            }
+            if (blockOrder[4] == 0) {
+              this.swap(7, 4);
+              return;
+            }
+            if (blockOrder[8] == 0) {
+              this.swap(7, 8);
+              return;
+            }
+          }
+        
+          if (block == 8) {
+            if (blockOrder[5] == 0) {
+              this.swap(8, 5);
+              return;
+            }
+            if (blockOrder[7] == 0) {
+              this.swap(8, 7);
+              return;
+            }
+          }
+    },
 
-  if (block == 1) {
-    if (blockOrder[0] == 0) {
-      swap(1, 0);
-      return;
-    }
-    if (blockOrder[4] == 0) {
-      swap(1, 4);
-      return;
-    }
-    if (blockOrder[2] == 0) {
-      swap(1, 2);
-      return;
-    }
-  }
-
-  if (block == 2) {
-    if (blockOrder[1] == 0) {
-      swap(2, 1);
-      return;
-    }
-    if (blockOrder[5] == 0) {
-      swap(2, 5);
-      return;
-    }
-  }
-
-  if (block == 3) {
-    if (blockOrder[0] == 0) {
-      swap(3, 0);
-      return;
-    }
-    if (blockOrder[4] == 0) {
-      swap(3, 4);
-      return;
-    }
-    if (blockOrder[6] == 0) {
-      swap(3, 6);
-      return;
-    }
-  }
-
-  if (block == 4) {
-    if (blockOrder[1] == 0) {
-      swap(4, 1);
-      return;
-    }
-    if (blockOrder[3] == 0) {
-      swap(4, 3);
-      return;
-    }
-    if (blockOrder[5] == 0) {
-      swap(4, 5);
-      return;
-    }
-    if (blockOrder[7] == 0) {
-      swap(4, 7);
-      return;
-    }
-  }
-
-  if (block == 5) {
-    if (blockOrder[2] == 0) {
-      swap(5, 2);
-      return;
-    }
-    if (blockOrder[4] == 0) {
-      swap(5, 4);
-      return;
-    }
-    if (blockOrder[8] == 0) {
-      swap(5, 8);
-      return;
-    }
-  }
-
-  if (block == 6) {
-    if (blockOrder[3] == 0) {
-      swap(6, 3);
-      return;
-    }
-    if (blockOrder[7] == 0) {
-      swap(6, 7);
-      return;
-    }
-  }
-
-  if (block == 7) {
-    if (blockOrder[6] == 0) {
-      swap(7, 6);
-      return;
-    }
-    if (blockOrder[4] == 0) {
-      swap(7, 4);
-      return;
-    }
-    if (blockOrder[8] == 0) {
-      swap(7, 8);
-      return;
-    }
-  }
-
-  if (block == 8) {
-    if (blockOrder[5] == 0) {
-      swap(8, 5);
-      return;
-    }
-    if (blockOrder[7] == 0) {
-      swap(8, 7);
-      return;
-    }
-  }
-}
-
-function swap(s1, s2) {
-  let temp = blockOrder[s1];
-  blockOrder[s1] = blockOrder[s2];
-  blockOrder[s2] = temp;
-  write();
-}
-
-game_init();
-
-// Move block on click
-document.addEventListener(
-  "click",
-  function (e) {
-    moveBlock(e.target.id);
-  },
-  false
-);
+    //Swap
+    swap: function(s1, s2) {
+        let temp = this.blockOrder[s1];
+        this.blockOrder[s1] = blockOrder[s2];
+        this.blockOrder[s2] = temp;
+        this.write();
+    },
+};
