@@ -80,13 +80,21 @@ function chargePage(numPage) {
 	switch(numPage) {
 		case "menu" :
 			var array = JSON.parse(localStorage.getItem("etapeActivated"))
-			for (var i = 0; i < array.length; i++) {
-				if (array[i]=="0") {
-					document.getElementById("e"+i).classList.add("inactiv")
-				} else {
-					document.getElementById("e"+i).classList.add("activ")
-				}
-			  }
+            if (array != undefined) {
+                //Pour que les inactive ne soient pas cliquable
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i]=="0") {
+                        document.getElementById("e"+i).classList.add("inactiv")
+                    } else {
+                        document.getElementById("e"+i).classList.add("activ");
+                        document.getElementById("t"+i).innerHTML = "✅ " + document.getElementById("t"+i).innerHTML;
+                    }
+                  }
+            } else {
+                for (var i = 0; i < array.length; i++) {
+                    document.getElementById("e"+i).classList.add("inactiv");
+                  }
+            }
 			if (localStorage.getItem("vainqueur") == 1) {
 				document.getElementById("myPopup").innerHTML = localStorage.getItem("popupTexte");
 				document.getElementById("myPopupscore").innerHTML = "+ " + localStorage.getItem("scoreEnCours")

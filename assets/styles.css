@@ -114,7 +114,6 @@ label {
 }
 
 .inactiv {
-  background-color: grey;
   pointer-events: none;
 }
 
