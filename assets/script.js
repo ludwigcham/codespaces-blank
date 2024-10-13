@@ -8,7 +8,6 @@ function initGame() {
 	localStorage.setItem("buttonActivated", JSON.stringify(etapesactivated)); //NBR de 0 par étape (avec intro et conclusion)
 	localStorage.setItem("scoreTotal", 0);
 	localStorage.setItem("scoreEnCours", 0);
-	localStorage.setItem("etapeEnCours", 0);
 	localStorage.setItem("datedebut", Date.now());
     localStorage.setItem("datefin", Date.now());
 	localStorage.setItem("vainqueur", 1);	
@@ -77,6 +76,11 @@ function initGame() {
 
 //chargePage : Au chargement de la page en fonction de la page 
 function chargePage(numPage) {
+  if (localStorage.getItem("vainqueur") == 1) {
+    document.getElementById("myPopup").innerHTML = localStorage.getItem("popupTexte");
+    document.getElementById("myPopupscore").innerHTML = "+ " + localStorage.getItem("scoreEnCours")
+    document.getElementById("popup").style.display = 'block';
+  }
 	switch(numPage) {
 		case "menu" :
 			var array = JSON.parse(localStorage.getItem("etapeActivated"))
@@ -87,8 +91,11 @@ function chargePage(numPage) {
                         document.getElementById("e"+i).classList.add("inactiv")
                     } else {
                         document.getElementById("e"+i).classList.add("activ");
-                        valeur = document.getElementById("t"+i).innerHTML;
-                        document.getElementById("t"+i).innerHTML = "✅ " + valeur;
+                        y=i-1;
+                        valeur = document.getElementById("t"+y).innerHTML;
+                        document.getElementById("t"+y).innerHTML = valeur + "✅";
+                        valeur2 = document.getElementById("t"+y).innerHTML;
+                        document.getElementById("t"+i).innerHTML = "➡️" + valeur;
                     }
                   }
             } else {
@@ -96,11 +103,6 @@ function chargePage(numPage) {
                     document.getElementById("e"+i).classList.add("inactiv");
                   }
             }
-			if (localStorage.getItem("vainqueur") == 1) {
-				document.getElementById("myPopup").innerHTML = localStorage.getItem("popupTexte");
-				document.getElementById("myPopupscore").innerHTML = "+ " + localStorage.getItem("scoreEnCours")
-				document.getElementById("popup").style.display = 'block';
-			}
 			break;
 		case "p3263e" :
 			var dateauj = new Date().getDate();
@@ -408,10 +410,14 @@ function valid(etapevalidee, score) {
 					vainqueur(etapevalidee, score);
 					return true;
 					break;
-                case "avec tes boules":
+        case "avec tes boules":
 					vainqueur(etapevalidee, score);
 					return true;
 					break;
+        case "AVEC TES BOULES":
+            vainqueur(etapevalidee, score);
+            return true;
+            break;
 				default :
 					alert("La phrase n'est pas bonne !");
 					code.focus();
@@ -450,15 +456,15 @@ function valid(etapevalidee, score) {
 					vainqueur(etapevalidee, score);
 					return true;
 					break;
-                case "Comedie":
+        case "Comedie":
 					vainqueur(etapevalidee, score);
 					return true;
 					break;
-                case "comédie":
+        case "comédie":
 					vainqueur(etapevalidee, score);
 					return true;
 					break;
-                case "comedie":
+        case "comedie":
 					vainqueur(etapevalidee, score);
 					return true;
 					break;
