@@ -64,9 +64,9 @@ label {
   overflow-y: scroll;
 }
 
-#champimg:active {
-  -webkit-transform: scale(2);
-  transform: scale(2);
+#champimg:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
   cursor: zoom-out;
 }
 
