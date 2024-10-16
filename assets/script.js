@@ -566,6 +566,7 @@ function vainqueur(etapevalidee, score) {
 			break;
     case 4:
 			localStorage.setItem("popupTexte", "Cette étoile te rapporte pas mal de coins !");
+      window.location="./m6182p.html";
 			break;
     case 5:
 			localStorage.setItem("popupTexte", "Bien joué ! La connexion est rétablie !");
