@@ -57,9 +57,11 @@ function initGame() {
 	indicesTexte[13][0] = "Je te l'ai fait LIVRER...";
     indicesTexte[13][0] = "...dans ta boîte aux lettres !";
         //Etape 14 =>  1 indice
-	indicesActivated[14] = Array(1).fill(0);
-	indicesTexte[14] = Array(1);
-	indicesTexte[14][0] = "Dans les boîtes de thé !";
+	indicesActivated[14] = Array(3).fill(0);
+	indicesTexte[14] = Array(3);
+	indicesTexte[14][0] = "Ce n'est peut être pas la meme matrice";
+	indicesTexte[14][1] = "Tu en as déjà 4 mais seulement 4 avec un indice !";
+	indicesTexte[14][1] = "Les id.";
         //Etape 15 =>  1 indice
 	indicesActivated[15] = Array(1).fill(0);
 	indicesTexte[15] = Array(1);
@@ -579,6 +581,7 @@ function vainqueur(etapevalidee, score) {
 			break;
     case 8:
 			localStorage.setItem("popupTexte", "Superbe ! Tu l'as trouvé super vite !");
+      window.location="./t3643u.html";
 			break;
     case 9:
 			localStorage.setItem("popupTexte", "Bien joué ! Tu l'as trouvé ! Retient ce code, comme les autres, il te reservira surement ... ");
@@ -588,6 +591,7 @@ function vainqueur(etapevalidee, score) {
 			break;
     case 11:
 			localStorage.setItem("popupTexte", "Bien joué ! Il fallait la trouver celle là !");
+      window.location="./l2005d.html";
 			break;
     case 12:
 			localStorage.setItem("popupTexte", "Super ! Je viens de partir dans le tube !");
@@ -603,12 +607,14 @@ function vainqueur(etapevalidee, score) {
 			break;
     case 16:
 			localStorage.setItem("popupTexte", "Et de 4 !");
+      window.location="./e8615z.html";
 			break;
     case 17:
 			localStorage.setItem("popupTexte", "Ils viennent de partir !");
 			break;
     case 18:
 			localStorage.setItem("popupTexte", "Dernière étoile trouvée !");
+      window.location="./a3837a.html";
 			break;
     case 19:
 			localStorage.setItem("popupTexte", "On y est presque !");
@@ -1087,6 +1093,7 @@ function champi() {
     if (compt_champi == 100) {
         valid(12,50);
         window.location.href="./c8568t.html";
+        localStorage.setItem("compt_champi", 0);
     } else {
         localStorage.setItem("compt_champi", compt_champi);
     }
