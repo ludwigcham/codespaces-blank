@@ -52,16 +52,17 @@ function initGame() {
 	indicesTexte[11] = Array(1);
 	indicesTexte[11][0] = "Monte sur ta terrasse";
         //Etape 13 =>  2 indice
-	indicesActivated[13] = Array(2).fill(0);
-	indicesTexte[13] = Array(2);
-	indicesTexte[13][0] = "Je te l'ai fait LIVRER...";
-    indicesTexte[13][0] = "...dans ta boîte aux lettres !";
+	indicesActivated[13] = Array(3).fill(0);
+	indicesTexte[13] = Array(3);
+	indicesTexte[13][0] = "Je viens de te les faire livrer";
+    indicesTexte[13][1] = "...dans ta boîte aux lettres !";
+    indicesTexte[13][2] = "Le code d'erreur reçu par sms, peut-être ...";
         //Etape 14 =>  1 indice
 	indicesActivated[14] = Array(3).fill(0);
 	indicesTexte[14] = Array(3);
-	indicesTexte[14][0] = "Ce n'est peut être pas la meme matrice";
+	indicesTexte[14][0] = "Ce n'est peut être pas la même matrice";
 	indicesTexte[14][1] = "Tu en as déjà 4 mais seulement 4 avec un indice !";
-	indicesTexte[14][1] = "Les id.";
+	indicesTexte[14][2] = "Les id.";
         //Etape 15 =>  1 indice
 	indicesActivated[15] = Array(1).fill(0);
 	indicesTexte[15] = Array(1);
@@ -575,6 +576,7 @@ function vainqueur(etapevalidee, score) {
 			break;
     case 6:
 			localStorage.setItem("popupTexte", "Tu as trouvé la boîte ! Fais-y attention, c'est fragile et elle semble fortement piégée !");
+      window.location.href="./o2550u.html";
 			break;
     case 7:
 			localStorage.setItem("popupTexte", "Tu peux couper le fil bleu, c'était la bonne couleur !");
@@ -1090,7 +1092,7 @@ function champi() {
     compt_champi = localStorage.getItem("compt_champi");
     console.log(compt_champi);
     compt_champi++;
-    if (compt_champi == 100) {
+    if (compt_champi == 60) {
         valid(12,50);
         window.location.href="./c8568t.html";
         localStorage.setItem("compt_champi", 0);
