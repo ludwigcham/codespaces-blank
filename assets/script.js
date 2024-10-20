@@ -178,7 +178,7 @@ function chargePage(numPage) {
 		    //Chargement des indices :
             ChargeIndices(19);
 		    break;
-        case "y6215" :
+        case "y6215t" :
 		    //Chargement de l'heure de fin
             datedebut = localStorage.getItem("datedebut");
             datefin = localStorage.getItem("datefin");
